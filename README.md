@@ -66,6 +66,10 @@ La aplicación queda en `http://localhost:3000` y la API en `http://localhost:30
 - Los adjuntos se almacenan en `apps/api/storage` en desarrollo local. Para producción se necesita almacenamiento persistente y protegido.
 - La autenticación usa JWT de 24 horas con renovación silenciosa; la sesión se conserva en el navegador de demostración.
 
+## Despliegue en AWS
+
+La guía, Dockerfiles, ejemplos de task definitions de ECS Fargate y script para subir imágenes a ECR están en `infra/aws/README.md`. El diseño usa RDS PostgreSQL, ECS Fargate, ALB, Secrets Manager y EFS para los adjuntos, conservando la API de almacenamiento local mediante un montaje persistente. Revisa/genera la migración Prisma antes de desplegar sobre una base AWS vacía. No incluyas `.env` ni uses datos seed en producción.
+
 ## Entregables académicos
 
 Revisa `CALIDAD/Sprint-2/README.md` para localizar el documento de requisitos, el documento separado de distribución supuesta de trabajo, la plantilla Excel completada, la presentación y los diagramas. Los nombres Jira RTE y asignaciones son la referencia; el apartado de contribuciones distingue asignación de trabajo demostrado.

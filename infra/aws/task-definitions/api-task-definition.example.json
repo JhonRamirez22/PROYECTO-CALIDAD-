@@ -1,0 +1,59 @@
+{
+  "family": "ritech-api",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "512",
+  "memory": "1024",
+  "executionRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::<ACCOUNT_ID>:role/ritechApiTaskRole",
+  "containerDefinitions": [
+    {
+      "name": "ritech-api",
+      "image": "<ACCOUNT_ID>.dkr.ecr.<REGION>.amazonaws.com/ritech-api:<IMAGE_TAG>",
+      "essential": true,
+      "portMappings": [{ "containerPort": 3001, "protocol": "tcp" }],
+      "environment": [
+        { "name": "NODE_ENV", "value": "production" },
+        { "name": "PORT", "value": "3001" },
+        { "name": "CORS_ORIGINS", "value": "https://app.example.com" },
+        { "name": "RITECH_UPLOAD_DIR", "value": "/mnt/ritech-storage" }
+      ],
+      "secrets": [
+        { "name": "DATABASE_URL", "valueFrom": "arn:aws:secretsmanager:<REGION>:<ACCOUNT_ID>:secret:ritech/prod/database-url-<SUFFIX>" },
+        { "name": "JWT_SECRET", "valueFrom": "arn:aws:secretsmanager:<REGION>:<ACCOUNT_ID>:secret:ritech/prod/jwt-secret-<SUFFIX>" }
+      ],
+      "mountPoints": [
+        { "sourceVolume": "ritech-files", "containerPath": "/mnt/ritech-storage", "readOnly": false }
+      ],
+      "healthCheck": {
+        "command": ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:3001/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))\""],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 45
+      },
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/ritech-api",
+          "awslogs-region": "<REGION>",
+          "awslogs-stream-prefix": "api"
+        }
+      }
+    }
+  ],
+  "volumes": [
+    {
+      "name": "ritech-files",
+      "efsVolumeConfiguration": {
+        "fileSystemId": "fs-REPLACE_ME",
+        "rootDirectory": "/",
+        "transitEncryption": "ENABLED",
+        "authorizationConfig": {
+          "accessPointId": "fsap-REPLACE_ME",
+          "iam": "ENABLED"
+        }
+      }
+    }
+  ]
+}

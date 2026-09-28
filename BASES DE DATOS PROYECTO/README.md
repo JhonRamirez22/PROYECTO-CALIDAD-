@@ -1,11 +1,11 @@
 # Base de datos de RiTech
 
-Este directorio contiene el esquema relacional PostgreSQL del sistema RiTech y los pasos para cargarlo con pgAdmin 4. En este equipo ya quedó creada y actualizada la base `ritech_db` en PostgreSQL 16 local. Se conservaron sus datos existentes y se aplicaron únicamente los cambios faltantes del modelo. El diseño se generó desde el modelo Prisma real de `apps/api/prisma/schema.prisma`, por lo que incluye los módulos implementados para exportación de café y cacao: usuarios y permisos, productos y lotes, clientes, pedidos, pagos y facturas, calidad, certificados, logística y embarques, documentación aduanera/EUDR, notificaciones y auditoría.
+Este directorio conserva scripts SQL históricos para el esquema local de RiTech y los pasos de pgAdmin usados antes del alcance Sprint 2. **No son la fuente de verdad del esquema actual y no deben usarse para desplegar AWS.** La fuente actual es `apps/api/prisma/schema.prisma`; AWS debe instalarse con las migraciones versionadas de `apps/api/prisma/migrations/`.
 
 ## Archivos
 
-- `01_esquema_ritech.sql`: crea desde cero los tipos enumerados, tablas, claves primarias y foráneas, índices y restricciones. No inserta usuarios ni datos ficticios. Úsalo solo en una base nueva.
-- `02_actualizacion_ritech_db.sql`: actualización aditiva que se aplicó a la base `ritech_db` existente; agrega los elementos que faltaban y conserva los datos actuales. No la ejecutes otra vez sobre esta misma base.
+- `01_esquema_ritech.sql`: snapshot histórico de creación de tablas para una base vacía de la versión anterior del esquema.
+- `02_actualizacion_ritech_db.sql`: snapshot histórico de cambios aditivos aplicados a la base local original. No lo ejecutes otra vez ni sobre una base AWS.
 
 ## Conexión local ya configurada
 
@@ -14,12 +14,12 @@ El servidor local PostgreSQL 16 está iniciado y `ritech_db` ya está lista. Par
 - Host: `localhost`
 - Port: `5432`
 - Maintenance database: `postgres`
-- Username: `jhon`
+- Username: el usuario PostgreSQL configurado en tu equipo
 - Password: déjala vacía en esta configuración local
 
 Guarda y expande **Servers → RiTech local → Databases → ritech_db → Schemas → public → Tables**. Si ya tienes registrado el servidor local, refresca su árbol y abre `ritech_db`.
 
-La conexión `RiTech local` ya quedó registrada en pgAdmin y el árbol `ritech_db → public → Tables` muestra las 29 tablas. Para conectar la aplicación, la URL local es `postgresql://jhon@localhost:5432/ritech_db`.
+La conexión local `RiTech local` puede aparecer en pgAdmin. Sustituye el usuario en la URL local según tu configuración: `postgresql://<usuario-local>@localhost:5432/ritech_db`.
 
 ## Crear la base de datos desde pgAdmin
 
@@ -46,7 +46,7 @@ El script usa identificadores entre comillas dobles porque Prisma conserva los n
 - Requiere PostgreSQL compatible con los tipos `JSONB` y `TIMESTAMP(3)` usados por Prisma. No requiere extensiones adicionales.
 - El esquema crea estructura, no datos de ejemplo ni cuentas de acceso. Las claves `id` son texto: en la aplicación Prisma genera sus valores `cuid` al crear registros. Si insertas manualmente desde pgAdmin, debes proporcionar un `id` único en esas tablas.
 - La columna `User.password` almacena el hash que prepara la aplicación; nunca guardes contraseñas en texto plano.
-- Este archivo se genera desde el esquema Prisma. Si cambian modelos en `apps/api/prisma/schema.prisma`, regenera el SQL antes de usarlo para una instalación nueva.
+- Estos SQL son snapshots antiguos y no incluyen todos los cambios de Sprint 2. Para una base nueva, usa las migraciones actuales en `apps/api/prisma/migrations/`; no uses `db push --accept-data-loss` en producción.
 - El script inicializa un esquema vacío. Si ya existen tablas con esos nombres, el `CREATE TABLE` fallará; úsalo sobre una base nueva o respalda y revisa el estado antes de aplicarlo a una base existente.
 
 ## Consultas rápidas

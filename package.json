@@ -12,11 +12,13 @@
     "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
     "build": "npm run build --workspaces",
     "lint": "npm run lint --workspaces",
-    "db:migrate": "npx prisma migrate dev --schema=apps/api/prisma/schema.prisma",
+    "db:migrate": "npm exec --workspace=apps/api -- prisma migrate dev --schema=prisma/schema.prisma",
+    "db:migrate:deploy": "npm exec --workspace=apps/api -- prisma migrate deploy --schema=prisma/schema.prisma",
     "db:push:sprint2": "npm exec --workspace=apps/api -- prisma db push --schema=prisma/schema.prisma",
     "db:generate": "npm exec --workspace=apps/api -- prisma generate --schema=prisma/schema.prisma",
     "db:seed": "npm exec --workspace=apps/api -- prisma db seed --schema=prisma/schema.prisma",
     "db:seed:sprint2": "npm run seed:sprint2 --workspace=apps/api",
+    "bootstrap:admin": "npm run bootstrap:admin --workspace=apps/api",
     "db:studio": "npm exec --workspace=apps/api -- prisma studio --schema=prisma/schema.prisma"
   },
   "devDependencies": {

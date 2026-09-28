@@ -1,0 +1,324 @@
+<h1>Trabajo de Calidad de Software</h1>
+<h2>Solución de Software para Exportaciones de Café y Cacao de la Empresa RiTech SAS a Países de la Unión Europea</h2>
+
+<p><em>Universidad Cooperativa de Colombia - Ingeniería de Software - Calidad de Software - Agosto 2026</em></p>
+
+<h2>Integrantes del Equipo</h2>
+<ul>
+    <li>Miguel Felipe Ceballos Ramirez</li>
+    <li>Stheban Danilo Hoyos Villota</li>
+    <li>Johan Steven Muñoz Enriquez</li>
+    <li>Jhon Andres Ramirez Portillo</li>
+    <li>Alvaro Samuel Vallejo Rodriguez</li>
+</ul>
+
+<p><strong>Profesora:</strong> Aida Liliana Rosero Ruiz</p>
+
+<hr/>
+
+<h1>1. Descripción del Caso Problema</h1>
+
+<p>La empresa RiTech SAS solicita una solución de software para llevar a cabo exportaciones de café y de cacao a los países de la Unión Europea. Este proyecto requiere el desarrollo de una plataforma web que permita gestionar de manera integral todo el proceso de exportación, desde la selección y preparación de los productos hasta su entrega en los mercados europeos.</p>
+
+<p>El sistema debe contemplar múltiples funcionalidades que incluyen, pero no se limitan a: gestión de inventarios, controles de calidad, seguimiento de transporte, registro de exportaciones, administración de usuarios y toma de decisiones de inversión. La plataforma busca optimizar los procesos operativos de la empresa y garantizar el cumplimiento de las normativas internacionales de comercio de productos agrícolas.</p>
+
+<h1>2. Product Backlog</h1>
+
+<p>El product backlog fue elaborado siguiendo la primera ceremonia de la metodología Ágil, en la cual se listan todos los elementos necesarios para construir el software solicitado.</p>
+
+<h2>2.1 Stack Tecnológico Seleccionado</h2>
+
+<table>
+    <tbody>
+        <tr>
+            <th>Capa</th>
+            <th>Tecnología</th>
+            <th>Justificación</th>
+        </tr>
+        <tr>
+            <td><strong>Frontend</strong></td>
+            <td>Next.js (o Vite+React) + Tailwind CSS + shadcn/ui + Motion (Framer Motion)</td>
+            <td>Para secuencias de scroll complejas se utilizará GSAP de forma puntual</td>
+        </tr>
+        <tr>
+            <td><strong>Backend</strong></td>
+            <td>NestJS (TypeScript + Node.js)</td>
+            <td>Framework robusto y escalable para APIs RESTful</td>
+        </tr>
+        <tr>
+            <td><strong>Base de datos</strong></td>
+            <td>PostgreSQL</td>
+            <td>Fiabilidad, soporte JSON, consultas complejas para reportes</td>
+        </tr>
+        <tr>
+            <td><strong>Autenticación</strong></td>
+            <td>Passport.js con JWT o Clerk/Supabase</td>
+            <td>Gestión segura de sesiones</td>
+        </tr>
+        <tr>
+            <td><strong>ORM</strong></td>
+            <td>Prisma ORM o TypeORM</td>
+            <td>Interacción tipada y segura con la base de datos</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>2.2 Elementos del Backlog</h2>
+
+<h3>2.2.1 Módulo de Gestión de Usuarios</h3>
+<ul>
+    <li>Registro de usuarios (clientes, vendedores, administradores)</li>
+    <li>Inicio de sesión con autenticación JWT</li>
+    <li>Gestión de roles y permisos (Administrador, Vendedor, Cliente, Operador de Logística, Inspector de Calidad)</li>
+    <li>Perfil de usuario con información personal y empresarial</li>
+    <li>Recuperación de contraseña</li>
+</ul>
+
+<h3>2.2.2 Módulo de Inventario</h3>
+<ul>
+    <li>Registro de productos (café y cacao, con variedades y presentaciones)</li>
+    <li>Control de stock disponible para exportación</li>
+    <li>Gestión de lotes por finca o proveedor</li>
+    <li>Alertas de inventario bajo</li>
+    <li>Historial de movimientos de inventario</li>
+    <li>Clasificación de productos por calidad (especial, superior, estándar)</li>
+</ul>
+
+<h3>2.2.3 Módulo de Exportaciones</h3>
+<ul>
+    <li>Creación y registro de órdenes de exportación</li>
+    <li>Selección de productos y cantidades para exportar</li>
+    <li>Documentación requerida (certificados de origen, certificados fitosanitarios, facturas comerciales, listas de empaque)</li>
+    <li>Gestión de destinos (países de la Unión Europea)</li>
+    <li>Cálculo de costos de exportación (flete, seguros, aranceles)</li>
+    <li>Seguimiento del estado de cada exportación (pendiente, en proceso, embarcada, en tránsito, entregada)</li>
+    <li>Registro de cantidades mínimas para iniciar una exportación</li>
+</ul>
+
+<h3>2.2.4 Módulo de Controles de Calidad</h3>
+<ul>
+    <li>Registro de inspecciones de calidad pre-exportación</li>
+    <li>Parámetros de calidad (humedad, defectos, pureza, tamaño de grano)</li>
+    <li>Generación de certificados de calidad</li>
+    <li>Control de calidad post-exportación (recepción en destino)</li>
+    <li>Historial de controles de calidad por lote</li>
+</ul>
+
+<h3>2.2.5 Módulo de Transporte y Seguimiento</h3>
+<ul>
+    <li>Registro de medios de transporte (marítimo, aéreo, terrestre)</li>
+    <li>Seguimiento en tiempo real del estado del producto durante el transporte</li>
+    <li>Estimación de tiempos de entrega</li>
+    <li>Gestión de empresas de logística asociadas</li>
+    <li>Registro de condiciones de transporte (temperatura, humedad en contenedor)</li>
+    <li>Notificaciones de cambios de estado</li>
+</ul>
+
+<h3>2.2.6 Módulo de Dashboard y Toma de Decisiones</h3>
+<ul>
+    <li>Panel principal con métricas clave de exportaciones</li>
+    <li>Gráficos de rendimiento de ventas por producto y región</li>
+    <li>Comparativa de inversiones (simulación de comportamiento NASDAQ 100)</li>
+    <li>Reportes de exportaciones históricas</li>
+    <li>Exportación de reportes en PDF y Excel</li>
+</ul>
+
+<h3>2.2.7 Módulo de Interfaz de Vendedores</h3>
+<ul>
+    <li>Publicación de productos por parte de vendedores independientes</li>
+    <li>Sistema de comisiones por ventas a través de la plataforma</li>
+    <li>Gestión de pedidos recibidos</li>
+    <li>Chat o mensajería entre vendedores y compradores</li>
+</ul>
+
+<h3>2.2.8 Infraestructura y Seguridad</h3>
+<ul>
+    <li>Configuración de servidor NestJS con PostgreSQL</li>
+    <li>Implementación de Passport.js con JWT para autenticación</li>
+    <li>Cifrado de datos sensibles</li>
+    <li>Respaldo automático de la base de datos</li>
+    <li>Despliegue en la nube (AWS, Vercel, o similar)</li>
+    <li>Documentación de la API (Swagger)</li>
+</ul>
+
+<hr/>
+
+<h1>3. Preguntas del Equipo</h1>
+
+<p>Las siguientes preguntas fueron formuladas durante la ceremonia de análisis del caso problema:</p>
+
+<h2>3.1 Preguntas sobre Exportaciones</h2>
+<ul>
+    <li>¿Cuál es la cantidad mínima con la que se inicia una exportación?</li>
+    <li>¿Cuántos tipos de exportación de cacao se darán?</li>
+    <li>¿Qué información se necesita para registrar cada exportación?</li>
+    <li>¿Cómo se llevaría a cabo el transporte para los productos?</li>
+    <li>¿Es necesario tener un seguimiento de cómo es el estado del producto mientras se esté transportando?</li>
+</ul>
+
+<h2>3.2 Preguntas sobre Vendedores y Comisiones</h2>
+<ul>
+    <li>¿Un vendedor podría vender su cacao a través de la página de la empresa dándole un porcentaje de comisión a esta empresa?</li>
+    <li>¿Qué comisión porcentaje se cobraría por cada venta realizada a través de la plataforma?</li>
+    <li>¿Qué requisitos debe cumplir un vendedor para registrarse en la plataforma?</li>
+</ul>
+
+<h2>3.3 Preguntas sobre Inventario y Calidad</h2>
+<ul>
+    <li>¿Cómo se manejaría el inventario general que esté disponible para exportación?</li>
+    <li>¿Cómo se realizarían los controles de calidad antes y después de exportar los productos?</li>
+    <li>¿Qué parámetros de calidad se evaluarán en el café y cacao?</li>
+</ul>
+
+<h2>3.4 Preguntas sobre Administración</h2>
+<ul>
+    <li>¿Quién sería el encargado de administrar el sistema?</li>
+    <li>¿Qué funciones podría realizar cada tipo de usuario dentro de la plataforma?</li>
+    <li>¿Qué permisos tendría cada rol de usuario en el sistema?</li>
+</ul>
+
+<hr/>
+
+<h1>4. Bitácora de Trabajo (Diario de Actividades)</h1>
+
+<h2>4.1 Integrante Stheban Danilo</h2>
+
+<h3>Día 12 de agosto</h3>
+<p>Analiqué el caso problema, que era el de la exportación de café y cacao. A partir de esto, propuse algunas ideas sobre cómo podría ser el diseño de la página, para tener una idea inicial de cómo se vería el proyecto más adelante. Con un compañero hicimos un primer boceto de la página y también ayudé a plantear algunas preguntas que nos sirvieran para mejorar el diseño y hacer que la página fuera más completa.</p>
+<p><strong>¿Qué hice ayer?</strong> Analicé el caso problema y propuse ideas de diseño.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Realizar bocetos de la página en herramienta Draw.io.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno en este momento.</p>
+
+<h3>Día 13 de agosto</h3>
+<p>Este día me dediqué a realizar los bocetos de la página en una herramienta que se llama Draw, con el objetivo de que mis compañeros pudieran entender mejor cómo quería que quedara la página. No nos reunimos todos, por lo que fue principalmente un trabajo individual de mi parte. Al finalizar el día ya teníamos una idea más clara y los bocetos iniciales de la página.</p>
+<p><strong>¿Qué hice ayer?</strong> Completé los bocetos en Draw.io.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Presentar los bocetos al equipo y recibir retroalimentación.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h3>Día 14 de agosto</h3>
+<p>Nos reunimos de manera presencial para organizar mejor el trabajo y repartir las actividades entre los compañeros. Durante la reunión aclaramos algunas dudas, compartimos ideas y discutimos cómo sería mejor desarrollar el proyecto del taller. También revisamos los bocetos que ya teníamos para definir mejor la estructura y continuar con el desarrollo de la página.</p>
+<p><strong>¿Qué hice ayer?</strong> Reunión presencial para organizar el trabajo.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Iniciar la elaboración del product backlog.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Definir la cantidad mínima para iniciar exportaciones.</p>
+
+<h3>Días 15-16 de agosto</h3>
+<p>El día 15 no se realizó ninguna actividad para el equipo ni el proyecto. El día 16, nos reunimos todo el equipo para realizar el product backlog y realizarlo de forma completa después de haber entendido el problema de exportación de cacao.</p>
+<p><strong>¿Qué hice ayer?</strong> Participé en la reunión de product backlog.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Completar los elementos pendientes del backlog.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h2>4.2 Integrante Samuel Vallejo</h2>
+
+<h3>Día 12 de agosto</h3>
+<p>Este día analicé el caso problema de la empresa RiTech SAS, el cual consiste en desarrollar una solución de software para facilitar la exportación de café y cacao hacia los países de la Unión Europea. A partir del análisis del problema, ayudé a plantear diferentes preguntas que nos permitieran conocer mejor las necesidades del sistema.</p>
+<p><strong>¿Qué hice ayer?</strong> Analicé el caso y formulé preguntas clave sobre los requisitos.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Continuar con las preguntas sobre transporte e inventario.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h3>Día 13 de agosto</h3>
+<p>Este día continuamos trabajando en las preguntas que surgieron del análisis del caso. Nos enfocamos principalmente en definir cómo se manejaría el transporte de los productos, cómo se controlaría el inventario disponible para exportación y cómo se realizarían los controles de calidad antes y después de enviar el café y el cacao.</p>
+<p><strong>¿Qué hice ayer?</strong> Trabajé en preguntas sobre transporte, inventario y calidad.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Organizar las preguntas por categorías.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h3>Día 14 de agosto</h3>
+<p>Nos reunimos de manera presencial para revisar y organizar las preguntas que habíamos planteado sobre el proyecto. Durante la reunión compartimos nuestras ideas y discutimos cuáles de las preguntas eran más importantes para definir los requisitos del sistema.</p>
+<p><strong>¿Qué hice ayer?</strong> Reunión presencial para definir requisitos y priorizar preguntas.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Contribuir a la elaboración del product backlog.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Definir roles de usuario y permisos.</p>
+
+<h2>4.3 Integrante Miguel Ceballos</h2>
+
+<h3>Día 12 de agosto</h3>
+<p>Con el grupo analizamos el problema y en este caso escogimos el problema de la exportación de café y cacao. A partir de esto, propuse algunas ideas sobre cómo podría ser el diseño de la página.</p>
+<p><strong>¿Qué hice ayer?</strong> Analicé el caso y propuse ideas de diseño inicial.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Buscar conceptos relevantes para el proyecto.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h3>Día 13 de agosto</h3>
+<p>Este día me dediqué a buscar conceptos y significados de cada una de las cosas que debíamos realizar. Este día no nos reunimos en equipo.</p>
+<p><strong>¿Qué hice ayer?</strong> Investigué conceptos sobre exportación y comercio internacional.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Compartir los conceptos aprendidos con el equipo.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h3>Día 14 de agosto</h3>
+<p>Nos reunimos de manera presencial para organizar mejor el trabajo y repartir las actividades entre los compañeros.</p>
+<p><strong>¿Qué hice ayer?</strong> Reunión presencial para repartir tareas.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Iniciar las tareas asignadas.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h3>Días 15-16 de agosto</h3>
+<p>El día 15 no se realizó actividad. El día 16 participé en la reunión del equipo para elaborar el product backlog de forma completa.</p>
+<p><strong>¿Qué hice ayer?</strong> Participé en la reunión de product backlog.</p>
+<p><strong>¿Qué voy a hacer hoy?</strong> Completar los elementos asignados del backlog.</p>
+<p><strong>¿Puntos de bloqueo?</strong> Ninguno.</p>
+
+<h2>4.4 Integrante Johan Muñoz</h2>
+
+<h3>Día 12 de agosto</h3>
+<p>Empezamos el proyecto revisando el caso de RiTech SAS para entender cuál era el problema que escogeríamos para solucionar. Después de hablarlo entre el grupo decidimos trabajar con el tema de la exportación de café y cacao.</p>
+
+<h3>Día 13 de agosto</h3>
+<p>Como este día no tuvimos reunión con el grupo, aproveché para investigar por mi cuenta algunos temas relacionados con las actividades que debíamos realizar.</p>
+
+<h3>Día 14 de agosto</h3>
+<p>Nos reunimos presencialmente para saber lo que cada uno había trabajado y organizar mejor el proyecto.</p>
+
+<h3>Día 16 de agosto</h3>
+<p>Nos reunimos nuevamente por llamada para avanzar con el Product Backlog que es una parte importante en nuestro trabajo.</p>
+
+<h2>4.5 Integrante Jhon Ramírez</h2>
+
+<h3>Día 12 de agosto</h3>
+<p>Junto con el equipo de trabajo, analizamos a fondo la problemática de la empresa RiTech SAS, orientada a desarrollar una solución tecnológica para optimizar la exportación de café y cacao hacia la Unión Europea. Formulé las primeras propuestas conceptuales sobre el diseño y la interfaz de la plataforma web.</p>
+
+<h3>Día 13 de agosto</h3>
+<p>Dediqué la jornada al trabajo individual de investigación, profundizando en la definición de conceptos técnicos y términos requeridos para las fases posteriores. Avancé en la estructuración de los requerimientos funcionales.</p>
+
+<h3>Día 14 de agosto</h3>
+<p>Participé en una sesión de trabajo presencial con el grupo para estructurar la distribución de tareas y resolver inquietudes sobre el proyecto. Consolidamos y priorizamos el banco de preguntas e ideas planteadas.</p>
+
+<h3>Día 15 de agosto</h3>
+<p>Sin actividades asignadas ni ejecutadas para el proyecto durante este día.</p>
+
+<h3>Día 16 de agosto</h3>
+<p>Nos reunimos la totalidad del equipo de manera asíncrona/presencial para la construcción integral del Product Backlog.</p>
+
+<hr/>
+
+<h1>5. Conclusiones</h1>
+
+<p>El análisis del caso problema de la empresa RiTech SAS permitió identificar las necesidades principales para el desarrollo de una plataforma web de exportación de café y cacao a países de la Unión Europea. A través de la metodología Ágil, se logró definir un product backlog completo que contempla los módulos necesarios para la gestión integral del proceso de exportación.</p>
+
+<p>Las preguntas formuladas por el equipo sirvieron como base para comprender mejor los requisitos del sistema, abarcando aspectos como las cantidades mínimas de exportación, los controles de calidad, el seguimiento de transporte, la gestión de inventarios y los roles de usuario. El stack tecnológico seleccionado (Next.js, NestJS, PostgreSQL, Passport.js y Prisma ORM) proporciona una base sólida y escalable para el desarrollo del proyecto.</p>
+
+<p>La experiencia de trabajo en equipo durante las primeras jornadas del proyecto demuestra la importancia de la comunicación constante y la organización de las tareas para el logro de los objetivos propuestos.</p>
+
+<hr/>
+
+<h1>6. Link de Jira y Propuesta Visual</h1>
+
+<p>A continuación presentamos el link de nuestro proyecto en Jira:</p>
+
+<p><a href="https://jhonra2008.atlassian.net/jira/software/c/projects/RTE/boards/2">https://jhonra2008.atlassian.net/jira/software/c/projects/RTE/boards/2</a></p>
+
+<p>Adicional presentamos los bocetos de una idea del proyecto en un futuro, realizados con todo el análisis propuesto anteriormente y con la ayuda de la herramienta Draw.io.</p>
+
+<hr/>
+
+<h1>Referencias</h1>
+
+<ul>
+    <li>Astles, C. (2023). <em>Next.js in Action</em>. Manning Publications.</li>
+    <li>Bezkrovnyy, O. (2023). <em>NestJS Modern Back-End Development</em>. Packt Publishing.</li>
+    <li>Crosby, S. (2024). <em>TypeScript for Node.js</em>. O'Reilly Media.</li>
+    <li>Dierks, T. y Rescorla, E. (2005). The Transport Layer Security (TLS) Protocol Version 1.1. RFC 4346.</li>
+    <li>Kacperski, M. (2023). Prisma: Next-generation ORM for Node.js and TypeScript. Prisma Data.</li>
+    <li>Katz, O. (2023). <em>Effective TypeScript: 62 Specific Ways to Improve Your TypeScript</em>. O'Reilly Media.</li>
+    <li>Miles, R. (2022). <em>PostgreSQL: The Comprehensive Guide</em>. 4th Edition. Wiley.</li>
+    <li>O'Reilly Media. (2023). <em>Tailwind CSS: A Utility-First CSS Framework for Rapid UI Development</em>.</li>
+    <li>Passport.js. (2024). Simple, unobtrusive authentication for Node.js. <a href="https://www.passportjs.org/">https://www.passportjs.org/</a></li>
+    <li>Psychz Networks. (2024). Understanding NASDAQ 100 Index and Investment Strategies.</li>
+    <li>Vercel. (2024). Next.js Documentation: The React Framework. <a href="https://nextjs.org/docs">https://nextjs.org/docs</a></li>
+    <li>World Trade Organization. (2023). International Trade Statistics. <a href="https://www.wto.org">https://www.wto.org</a></li>
+</ul>

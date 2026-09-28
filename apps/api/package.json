@@ -18,7 +18,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "seed:sprint2": "ts-node prisma/seed-sprint2.ts"
+    "seed:sprint2": "ts-node prisma/seed-sprint2.ts",
+    "bootstrap:admin": "ts-node prisma/bootstrap-admin.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
