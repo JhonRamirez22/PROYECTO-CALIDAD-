@@ -1,0 +1,81 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">GR</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">📊 Dashboard</text>
+  <rect x="10" y="130" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="152" fill="#fff" font-size="13">🏢 Clientes UE</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">📦 Productos</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📄 Pedidos</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Historial de Compras por Cliente</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">🇩🇪 Berliner Rösterei GmbH</text>
+
+  <rect x="250" y="140" width="140" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="260" y="161" fill="#64748b" font-size="12">📅 01/01/2025</text>
+  <rect x="400" y="140" width="140" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="410" y="161" fill="#64748b" font-size="12">📅 29/07/2026</text>
+  <rect x="550" y="140" width="140" height="32" rx="6" fill="#1e40af"/>
+  <text x="560" y="161" fill="#fff" font-size="12">📥 Exportar</text>
+
+  <rect x="250" y="185" width="200" height="70" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="208" fill="#64748b" font-size="11">Total Pedidos</text>
+  <text x="270" y="235" fill="#1e293b" font-size="24" font-weight="bold">12</text>
+
+  <rect x="470" y="185" width="200" height="70" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="490" y="208" fill="#64748b" font-size="11">Monto Acumulado</text>
+  <text x="490" y="235" fill="#1e293b" font-size="24" font-weight="bold">€ 84,500</text>
+
+  <rect x="690" y="185" width="180" height="70" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="710" y="208" fill="#64748b" font-size="11">Frecuencia</text>
+  <text x="710" y="235" fill="#1e293b" font-size="24" font-weight="bold">1.8/mes</text>
+
+  <rect x="250" y="275" width="620" height="30" rx="6" fill="#e0e7ff"/>
+  <text x="270" y="295" fill="#1e40af" font-size="11" font-weight="600">Fecha</text>
+  <text x="370" y="295" fill="#1e40af" font-size="11" font-weight="600">Pedido</text>
+  <text x="470" y="295" fill="#1e40af" font-size="11" font-weight="600">Producto</text>
+  <text x="600" y="295" fill="#1e40af" font-size="11" font-weight="600">Cantidad</text>
+  <text x="720" y="295" fill="#1e40af" font-size="11" font-weight="600">Monto</text>
+
+  <text x="270" y="323" fill="#374151" font-size="12">15/07/2026</text>
+  <text x="370" y="323" fill="#3b82f6" font-size="12" text-decoration="underline">PED-2026-045</text>
+  <text x="470" y="323" fill="#374151" font-size="12">Café Arábica</text>
+  <text x="600" y="323" fill="#374151" font-size="12">2,500 kg</text>
+  <text x="720" y="323" fill="#374151" font-size="12">€ 12,500</text>
+  <line x1="250" y1="333" x2="870" y2="333" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="353" fill="#374151" font-size="12">01/06/2026</text>
+  <text x="370" y="353" fill="#3b82f6" font-size="12" text-decoration="underline">PED-2026-038</text>
+  <text x="470" y="353" fill="#374151" font-size="12">Cacao Criollo</text>
+  <text x="600" y="353" fill="#374151" font-size="12">1,800 kg</text>
+  <text x="720" y="353" fill="#374151" font-size="12">€ 9,000</text>
+  <line x1="250" y1="363" x2="870" y2="363" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="383" fill="#374151" font-size="12">15/05/2026</text>
+  <text x="370" y="383" fill="#3b82f6" font-size="12" text-decoration="underline">PED-2026-031</text>
+  <text x="470" y="383" fill="#374151" font-size="12">Café Arábica</text>
+  <text x="600" y="383" fill="#374151" font-size="12">3,000 kg</text>
+  <text x="720" y="383" fill="#374151" font-size="12">€ 15,000</text>
+  <line x1="250" y1="393" x2="870" y2="393" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="413" fill="#374151" font-size="12">01/04/2026</text>
+  <text x="370" y="413" fill="#3b82f6" font-size="12" text-decoration="underline">PED-2026-024</text>
+  <text x="470" y="413" fill="#374151" font-size="12">Café Robusta</text>
+  <text x="600" y="413" fill="#374151" font-size="12">4,100 kg</text>
+  <text x="720" y="413" fill="#374151" font-size="12">€ 8,200</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-13 "Historial de compras por cliente" | Wireframe | RiTech Export System</text>
+</svg>

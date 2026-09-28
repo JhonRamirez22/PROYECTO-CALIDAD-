@@ -1,0 +1,74 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">OP</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <text x="24" y="150" fill="#64748b" font-size="13">📦 Productos</text>
+  <rect x="10" y="160" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="182" fill="#fff" font-size="13">📄 Pedidos</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📜 Documentos</text>
+  <text x="24" y="248" fill="#64748b" font-size="13">📊 Facturación</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Creación de Pedido de Exportación</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Nuevo pedido para comprador europeo</text>
+
+  <rect x="250" y="145" width="300" height="400" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="175" fill="#374151" font-size="13" font-weight="600">Cliente</text>
+  <rect x="270" y="185" width="260" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="280" y="208" fill="#94a3b8" font-size="13">Berliner Rösterei GmbH</text>
+
+  <text x="270" y="240" fill="#374151" font-size="13" font-weight="600">Producto</text>
+  <rect x="270" y="250" width="260" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="280" y="273" fill="#94a3b8" font-size="13">Café Arábica Supremo</text>
+
+  <text x="270" y="305" fill="#374151" font-size="13" font-weight="600">Cantidad (kg)</text>
+  <rect x="270" y="315" width="260" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="280" y="338" fill="#374151" font-size="13">5,000</text>
+
+  <text x="270" y="370" fill="#374151" font-size="13" font-weight="600">Moneda</text>
+  <rect x="270" y="380" width="120" height="32" rx="6" fill="#1e40af"/>
+  <text x="330" y="401" text-anchor="middle" fill="#fff" font-size="11">EUR €</text>
+  <rect x="400" y="380" width="120" height="32" rx="6" fill="#e2e8f0"/>
+  <text x="460" y="401" text-anchor="middle" fill="#64748b" font-size="11">USD $</text>
+
+  <text x="270" y="435" fill="#374151" font-size="13" font-weight="600">Incoterm</text>
+  <rect x="270" y="445" width="120" height="32" rx="6" fill="#e2e8f0"/>
+  <text x="330" y="466" text-anchor="middle" fill="#64748b" font-size="11">FOB</text>
+  <rect x="400" y="445" width="120" height="32" rx="6" fill="#1e40af"/>
+  <text x="460" y="466" text-anchor="middle" fill="#fff" font-size="11">CIF</text>
+  <rect x="270" y="485" width="120" height="32" rx="6" fill="#e2e8f0"/>
+  <text x="330" y="506" text-anchor="middle" fill="#64748b" font-size="11">EXW</text>
+
+  <rect x="580" y="145" width="270" height="400" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="600" y="175" fill="#374151" font-size="14" font-weight="600">Resumen del Pedido</text>
+  <rect x="600" y="195" width="230" height="180" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="620" y="225" fill="#64748b" font-size="12">Cliente:</text>
+  <text x="730" y="225" fill="#1e293b" font-size="12" font-weight="600">Berliner R.</text>
+  <text x="620" y="250" fill="#64748b" font-size="12">Producto:</text>
+  <text x="730" y="250" fill="#1e293b" font-size="12">Café Arábica</text>
+  <text x="620" y="275" fill="#64748b" font-size="12">Cantidad:</text>
+  <text x="730" y="275" fill="#1e293b" font-size="12" font-weight="600">5,000 kg</text>
+  <text x="620" y="300" fill="#64748b" font-size="12">Precio:</text>
+  <text x="730" y="300" fill="#1e293b" font-size="12">€ 5.00/kg</text>
+  <line x1="620" y1="315" x2="810" y2="315" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="620" y="340" fill="#1e40af" font-size="14" font-weight="600">Total: € 25,000</text>
+  <text x="620" y="360" fill="#64748b" font-size="10">CIF Hamburg · 15/07/2026</text>
+
+  <rect x="270" y="495" width="260" height="40" rx="6" fill="#16a34a"/>
+  <text x="400" y="520" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Crear Pedido</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-15 "Creación de pedido de exportación" | Wireframe | RiTech Export System</text>
+</svg>

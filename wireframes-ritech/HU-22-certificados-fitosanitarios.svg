@@ -1,0 +1,69 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">OP</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <rect x="10" y="130" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="152" fill="#fff" font-size="13">📜 Documentos</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">📄 Pedidos</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📦 Productos</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Certificados Fitosanitarios</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Gestión de certificados sanitarios para exportación</text>
+
+  <rect x="250" y="145" width="200" height="36" rx="6" fill="#1e40af"/>
+  <text x="350" y="168" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">+ Nuevo Certificado</text>
+
+  <rect x="250" y="200" width="620" height="70" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="250" y="200" width="4" height="70" rx="2" fill="#16a34a"/>
+  <text x="270" y="222" fill="#374151" font-size="12" font-weight="600">CF-2026-001</text>
+  <text x="400" y="222" fill="#16a34a" font-size="11" font-weight="600">✅ Vigente</text>
+  <text x="270" y="242" fill="#64748b" font-size="11">ICA Colombia · Lote RT-2026-001 · Café Arábica Supremo</text>
+  <text x="270" y="260" fill="#94a3b8" font-size="10">Emisión: 01/07/2026 · Vence: 01/10/2026 · 92 días restantes</text>
+  <rect x="770" y="220" width="80" height="28" rx="4" fill="#e2e8f0"/>
+  <text x="810" y="239" text-anchor="middle" fill="#64748b" font-size="11">Ver PDF</text>
+
+  <rect x="250" y="280" width="620" height="70" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="250" y="280" width="4" height="70" rx="2" fill="#f59e0b"/>
+  <text x="270" y="302" fill="#374151" font-size="12" font-weight="600">CF-2026-002</text>
+  <text x="400" y="302" fill="#d97706" font-size="11" font-weight="600">⚠️ Por vencer (28 días)</text>
+  <text x="270" y="322" fill="#64748b" font-size="11">ICA Colombia · Lote RT-2026-CC-001 · Cacao Criollo</text>
+  <text x="270" y="340" fill="#94a3b8" font-size="10">Emisión: 15/06/2026 · Vence: 15/09/2026 · Renovar antes de vencimiento</text>
+  <rect x="770" y="300" width="80" height="28" rx="4" fill="#f59e0b"/>
+  <text x="810" y="319" text-anchor="middle" fill="#fff" font-size="11">Renovar</text>
+
+  <rect x="250" y="360" width="620" height="70" rx="6" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="250" y="360" width="4" height="70" rx="2" fill="#ef4444"/>
+  <text x="270" y="382" fill="#374151" font-size="12" font-weight="600">CF-2026-003</text>
+  <text x="400" y="382" fill="#ef4444" font-size="11" font-weight="600">❌ Vencido (15 días)</text>
+  <text x="270" y="402" fill="#64748b" font-size="11">ICA Colombia · Lote RT-2025-015 · Café Robusta</text>
+  <text x="270" y="420" fill="#94a3b8" font-size="10">Emisión: 01/12/2025 · Vence: 01/07/2026 · Solicitar renovación urgente</text>
+  <rect x="770" y="380" width="80" height="28" rx="4" fill="#ef4444"/>
+  <text x="810" y="399" text-anchor="middle" fill="#fff" font-size="11">Renovar</text>
+
+  <rect x="250" y="445" width="620" height="100" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="470" fill="#374151" font-size="13" font-weight="600">Nuevo Certificado</text>
+  <text x="270" y="495" fill="#64748b" font-size="11">Lote:</text>
+  <rect x="310" y="485" width="180" height="28" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="320" y="504" fill="#94a3b8" font-size="11">Seleccionar lote...</text>
+  <text x="510" y="495" fill="#64748b" font-size="11">Autoridad:</text>
+  <rect x="580" y="485" width="160" height="28" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="590" y="504" fill="#94a3b8" font-size="11">ICA Colombia</text>
+  <rect x="750" y="485" width="100" height="28" rx="4" fill="#1e40af"/>
+  <text x="800" y="504" text-anchor="middle" fill="#fff" font-size="11">Adjuntar</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-22 "Gestión de certificados fitosanitarios" | Wireframe | RiTech Export System</text>
+</svg>

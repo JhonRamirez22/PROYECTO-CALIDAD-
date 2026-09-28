@@ -1,0 +1,70 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">AD</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <text x="24" y="150" fill="#64748b" font-size="13">📦 Productos</text>
+  <rect x="10" y="160" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="182" fill="#fff" font-size="13">⚙️ Configuración</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📜 Documentos</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Configuración de Plantillas por País</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Plantillas de documentos personalizadas por destino</text>
+
+  <rect x="250" y="145" width="200" height="36" rx="6" fill="#1e40af"/>
+  <text x="350" y="168" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">+ Nueva Plantilla</text>
+
+  <rect x="250" y="200" width="290" height="180" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="225" fill="#374151" font-size="13" font-weight="600">🇦🇱 Alemania</text>
+  <text x="270" y="245" fill="#64748b" font-size="11">Idioma: Alemán / Inglés</text>
+  <text x="270" y="265" fill="#64748b" font-size="11">Moneda: EUR</text>
+  <text x="270" y="285" fill="#64748b" font-size="11">Formato fecha: DD.MM.JJJJ</text>
+  <text x="270" y="305" fill="#64748b" font-size="11">IVA: 19% · USt-ID requerido</text>
+  <text x="270" y="325" fill="#64748b" font-size="11">EUDR: Requerido</text>
+  <text x="270" y="350" fill="#16a34a" font-size="10" font-weight="600">Activa · 3 documentos configurados</text>
+  <rect x="480" y="220" width="40" height="28" rx="4" fill="#e2e8f0"/>
+  <text x="500" y="239" text-anchor="middle" fill="#64748b" font-size="11">✏️</text>
+
+  <rect x="560" y="200" width="290" height="180" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="580" y="225" fill="#374151" font-size="13" font-weight="600">🇫🇷 Francia</text>
+  <text x="580" y="245" fill="#64748b" font-size="11">Idioma: Francés</text>
+  <text x="580" y="265" fill="#64748b" font-size="11">Moneda: EUR</text>
+  <text x="580" y="285" fill="#64748b" font-size="11">Formato fecha: JJ/MM/DD</text>
+  <text x="580" y="305" fill="#64748b" font-size="11">IVA: 20% · TVA intracommunautaire</text>
+  <text x="580" y="325" fill="#64748b" font-size="11">EUDR: Requerido</text>
+  <text x="580" y="350" fill="#16a34a" font-size="10" font-weight="600">Activa · 3 documentos configurados</text>
+  <rect x="790" y="220" width="40" height="28" rx="4" fill="#e2e8f0"/>
+  <text x="810" y="239" text-anchor="middle" fill="#64748b" font-size="11">✏️</text>
+
+  <rect x="250" y="395" width="620" height="150" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="420" fill="#374151" font-size="13" font-weight="600">Configurar Plantilla · Alemania</text>
+  <text x="270" y="445" fill="#64748b" font-size="11">Documentos incluidos:</text>
+  <rect x="270" y="455" width="140" height="22" rx="4" fill="#e0e7ff"/>
+  <text x="280" y="471" fill="#1e40af" font-size="10">✅ Commercial Invoice</text>
+  <rect x="420" y="455" width="140" height="22" rx="4" fill="#e0e7ff"/>
+  <text x="430" y="471" fill="#1e40af" font-size="10">✅ Packing List</text>
+  <rect x="570" y="455" width="140" height="22" rx="4" fill="#e0e7ff"/>
+  <text x="580" y="471" fill="#1e40af" font-size="10">✅ Cert. Origen</text>
+  <rect x="270" y="485" width="140" height="22" rx="4" fill="#e0e7ff"/>
+  <text x="280" y="501" fill="#1e40af" font-size="10">✅ Cert. Fitosanitario</text>
+  <rect x="420" y="485" width="140" height="22" rx="4" fill="#e0e7ff"/>
+  <text x="430" y="501" fill="#1e40af" font-size="10">✅ EUDR Due Diligence</text>
+  <rect x="570" y="485" width="140" height="22" rx="4" fill="#dcfce7"/>
+  <text x="580" y="501" fill="#16a34a" font-size="10">+ Agregar más</text>
+  <text x="270" y="530" fill="#64748b" font-size="11">Logo empresa: ✅ · Pie de página: Texto libre · Notas: Traducción juramentada</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-26 "Configuración de plantillas por país" | Wireframe | RiTech Export System</text>
+</svg>

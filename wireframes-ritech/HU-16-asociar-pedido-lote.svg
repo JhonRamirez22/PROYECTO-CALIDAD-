@@ -1,0 +1,69 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">OP</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <rect x="10" y="100" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="122" fill="#fff" font-size="13">📄 Pedidos</text>
+  <text x="24" y="158" fill="#64748b" font-size="13">📋 Lotes</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">📜 Documentos</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Asociar Pedido a Lote Específico</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Vincular el pedido PED-2026-045 con su lote de exportación</text>
+
+  <rect x="250" y="145" width="300" height="400" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="175" fill="#374151" font-size="13" font-weight="600">Pedido Seleccionado</text>
+  <rect x="270" y="185" width="260" height="50" rx="6" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="280" y="207" fill="#1e40af" font-size="12" font-weight="600">PED-2026-045</text>
+  <text x="280" y="223" fill="#64748b" font-size="10">5,000 kg Café Arábica · Berliner Rösterei</text>
+
+  <text x="270" y="265" fill="#374151" font-size="13" font-weight="600">Lote a Asociar</text>
+  <rect x="270" y="275" width="260" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="280" y="298" fill="#94a3b8" font-size="13">RT-2026-001 (Café Arábica)</text>
+
+  <text x="270" y="330" fill="#374151" font-size="13" font-weight="600">Cantidad del Lote</text>
+  <rect x="270" y="340" width="120" height="36" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="280" y="363" fill="#16a34a" font-size="12">Disponible: 2,500 kg</text>
+  <rect x="400" y="340" width="130" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="410" y="363" fill="#374151" font-size="12">A asignar: 2,500 kg</text>
+
+  <text x="270" y="400" fill="#64748b" font-size="11">⚠️ El lote tiene 2,500 kg disponibles. El pedido requiere 5,000 kg.</text>
+  <text x="270" y="418" fill="#64748b" font-size="11">Se necesita asociar más de un lote o ajustar cantidad.</text>
+
+  <text x="270" y="450" fill="#374151" font-size="13" font-weight="600">Segundo Lote (opcional)</text>
+  <rect x="270" y="460" width="260" height="36" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="280" y="483" fill="#94a3b8" font-size="13">RT-2026-002 (Café Arábica)</text>
+
+  <rect x="580" y="145" width="270" height="400" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="600" y="175" fill="#374151" font-size="14" font-weight="600">Lotes Disponibles</text>
+  <rect x="600" y="190" width="230" height="80" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="615" y="212" fill="#16a34a" font-size="12" font-weight="600">✅ RT-2026-001 · 2,500 kg</text>
+  <text x="615" y="228" fill="#64748b" font-size="10">Café Arábica Supremo</text>
+  <text x="615" y="244" fill="#64748b" font-size="10">Finca La Esperanza, Huila</text>
+  <rect x="615" y="252" width="60" height="16" rx="4" fill="#16a34a"/>
+  <text x="645" y="264" text-anchor="middle" fill="#fff" font-size="9">Disponible</text>
+
+  <rect x="600" y="280" width="230" height="80" rx="6" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="615" y="302" fill="#d97706" font-size="12" font-weight="600">⚠️ RT-2026-002 · 1,800 kg</text>
+  <text x="615" y="318" fill="#64748b" font-size="10">Café Arábica Supremo</text>
+  <text x="615" y="334" fill="#64748b" font-size="10">Finca El Paraíso, Nariño</text>
+  <rect x="615" y="342" width="60" height="16" rx="4" fill="#d97706"/>
+  <text x="645" y="354" text-anchor="middle" fill="#fff" font-size="9">Reservado</text>
+
+  <rect x="270" y="495" width="260" height="40" rx="6" fill="#1e40af"/>
+  <text x="400" y="520" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Confirmar Asociación</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-16 "Asociación de pedido a lote específico" | Wireframe | RiTech Export System</text>
+</svg>

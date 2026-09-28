@@ -1,0 +1,89 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">OP</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <rect x="10" y="130" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="152" fill="#fff" font-size="13">📜 Documentos</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">📄 Pedidos</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📊 Facturación</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Packing List</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Detalle de embalaje y contenido del envío</text>
+
+  <rect x="250" y="140" width="300" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="162" fill="#64748b" font-size="11">Emisor:</text>
+  <text x="320" y="162" fill="#1e293b" font-size="12" font-weight="600">RiTech SAS</text>
+  <text x="270" y="180" fill="#64748b" font-size="10">Bogotá, Colombia</text>
+
+  <rect x="580" y="140" width="290" height="50" rx="6" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="600" y="162" fill="#64748b" font-size="11">Destinatario:</text>
+  <text x="690" y="162" fill="#1e293b" font-size="12" font-weight="600">Berliner Rösterei</text>
+  <text x="600" y="180" fill="#64748b" font-size="10">Hamburg, Germany</text>
+
+  <rect x="250" y="200" width="100" height="30" rx="4" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <text x="260" y="220" fill="#1e40af" font-size="10" font-weight="600">PL-2026-045</text>
+  <rect x="360" y="200" width="100" height="30" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="370" y="220" fill="#64748b" font-size="10">Fecha: 20/07/2026</text>
+  <rect x="470" y="200" width="120" height="30" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="480" y="220" fill="#64748b" font-size="10">Pedido: PED-2026-045</text>
+  <rect x="600" y="200" width="120" height="30" rx="4" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="610" y="220" fill="#64748b" font-size="10">Contenedor: MSKU7294851</text>
+
+  <rect x="250" y="245" width="620" height="25" rx="4" fill="#e0e7ff"/>
+  <text x="270" y="262" fill="#1e40af" font-size="11" font-weight="600">Bulto</text>
+  <text x="350" y="262" fill="#1e40af" font-size="11" font-weight="600">Descripción</text>
+  <text x="520" y="262" fill="#1e40af" font-size="11" font-weight="600">Peso Neto</text>
+  <text x="630" y="262" fill="#1e40af" font-size="11" font-weight="600">Peso Bruto</text>
+  <text x="750" y="262" fill="#1e40af" font-size="11" font-weight="600">Dimensiones</text>
+
+  <text x="270" y="290" fill="#374151" font-size="12">Saco 1</text>
+  <text x="350" y="290" fill="#374151" font-size="12">Café Arábica · Lote RT-2026-001</text>
+  <text x="520" y="290" fill="#374151" font-size="12">60 kg</text>
+  <text x="630" y="290" fill="#374151" font-size="12">62 kg</text>
+  <text x="750" y="290" fill="#374151" font-size="12">110×70×60 cm</text>
+  <line x1="250" y1="300" x2="870" y2="300" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="320" fill="#374151" font-size="12">Sacos 2-83</text>
+  <text x="350" y="320" fill="#374151" font-size="12">Café Arábica · Lote RT-2026-001</text>
+  <text x="520" y="320" fill="#374151" font-size="12">4,980 kg (83 sacos)</text>
+  <text x="630" y="320" fill="#374151" font-size="12">5,146 kg</text>
+  <text x="750" y="320" fill="#374151" font-size="12">110×70×60 cm c/u</text>
+  <line x1="250" y1="330" x2="870" y2="330" stroke="#e2e8f0" stroke-width="1"/>
+
+  <line x1="520" y1="345" x2="870" y2="345" stroke="#1e293b" stroke-width="2"/>
+  <text x="520" y="365" fill="#1e40af" font-size="12" font-weight="700">Total: 5,040 kg neto · 5,208 kg bruto</text>
+
+  <text x="270" y="400" fill="#64748b" font-size="11">Número de Bultos:</text>
+  <text x="380" y="400" fill="#374151" font-size="12" font-weight="600">84 sacos de yute</text>
+  <text x="270" y="420" fill="#64748b" font-size="11">Tipo de Embalaje:</text>
+  <text x="380" y="420" fill="#374151" font-size="12">Sacos de yute de 60 kg</text>
+  <text x="270" y="440" fill="#64748b" font-size="11">Marcas:</text>
+  <text x="380" y="440" fill="#374151" font-size="12">RiTech · Café de Origen · Lote RT-2026-001</text>
+  <text x="270" y="460" fill="#64748b" font-size="11">Temp. Transporte:</text>
+  <text x="380" y="460" fill="#374151" font-size="12">Ambiente (15-25°C)</text>
+  <text x="270" y="480" fill="#64748b" font-size="11">Sellos:</text>
+  <text x="380" y="480" fill="#374151" font-size="12">MSKU7294851 / Sello Aduana: ADU-2026-88451</text>
+
+  <rect x="250" y="515" width="130" height="36" rx="6" fill="#1e40af"/>
+  <text x="315" y="538" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">📥 Descargar PDF</text>
+  <rect x="395" y="515" width="130" height="36" rx="6" fill="#16a34a"/>
+  <text x="460" y="538" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">📧 Enviar</text>
+  <rect x="540" y="515" width="130" height="36" rx="6" fill="#e2e8f0"/>
+  <text x="605" y="538" text-anchor="middle" fill="#64748b" font-size="12">🖨️ Imprimir</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-21 "Generación de packing list" | Wireframe | RiTech Export System</text>
+</svg>

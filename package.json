@@ -1,0 +1,26 @@
+{
+  "name": "ritech-export",
+  "version": "0.1.0",
+  "private": true,
+  "description": "RiTech Export System — B2B Colombian coffee & cacao export platform for EU buyers",
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:api": "npm run start:dev --workspace=apps/api",
+    "dev": "concurrently \"npm run dev:web\" \"npm run dev:api\"",
+    "build": "npm run build --workspaces",
+    "lint": "npm run lint --workspaces",
+    "db:migrate": "npx prisma migrate dev --schema=apps/api/prisma/schema.prisma",
+    "db:push:sprint2": "npm exec --workspace=apps/api -- prisma db push --schema=prisma/schema.prisma",
+    "db:generate": "npm exec --workspace=apps/api -- prisma generate --schema=prisma/schema.prisma",
+    "db:seed": "npm exec --workspace=apps/api -- prisma db seed --schema=prisma/schema.prisma",
+    "db:seed:sprint2": "npm run seed:sprint2 --workspace=apps/api",
+    "db:studio": "npm exec --workspace=apps/api -- prisma studio --schema=prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.0"
+  }
+}

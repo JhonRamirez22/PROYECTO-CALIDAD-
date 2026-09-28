@@ -1,0 +1,89 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">AD</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <rect x="10" y="100" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="122" fill="#fff" font-size="13">📋 Auditoría</text>
+  <text x="24" y="158" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">📦 Productos</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📋 Lotes</text>
+  <text x="24" y="248" fill="#64748b" font-size="13">🏢 Clientes</text>
+  <text x="24" y="278" fill="#64748b" font-size="13">📄 Pedidos</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Log de Auditoría del Sistema</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Control de accesos, cambios y actividades</text>
+
+  <rect x="250" y="140" width="140" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="260" y="161" fill="#64748b" font-size="12">🔍 Filtrar por usuario</text>
+  <rect x="400" y="140" width="140" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="410" y="161" fill="#64748b" font-size="12">📦 Filtrar por módulo</text>
+  <rect x="550" y="140" width="160" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="560" y="161" fill="#64748b" font-size="12">📅 01/01/2026 - 29/07/2026</text>
+  <rect x="720" y="140" width="140" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="730" y="161" fill="#64748b" font-size="12">⚡ Tipo de acción</text>
+
+  <rect x="250" y="185" width="620" height="32" rx="6" fill="#e0e7ff"/>
+  <text x="270" y="206" fill="#1e40af" font-size="11" font-weight="600">Fecha/Hora</text>
+  <text x="380" y="206" fill="#1e40af" font-size="11" font-weight="600">Usuario</text>
+  <text x="500" y="206" fill="#1e40af" font-size="11" font-weight="600">Acción</text>
+  <text x="620" y="206" fill="#1e40af" font-size="11" font-weight="600">Módulo</text>
+  <text x="750" y="206" fill="#1e40af" font-size="11" font-weight="600">IP</text>
+
+  <text x="270" y="235" fill="#374151" font-size="11">29/07/2026 08:32</text>
+  <text x="380" y="235" fill="#374151" font-size="11">carlos@ritech.com</text>
+  <text x="500" y="235" fill="#16a34a" font-size="11">Login</text>
+  <text x="620" y="235" fill="#374151" font-size="11">Auth</text>
+  <text x="750" y="235" fill="#64748b" font-size="11">192.168.1.45</text>
+  <line x1="250" y1="245" x2="870" y2="245" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="265" fill="#374151" font-size="11">29/07/2026 09:15</text>
+  <text x="380" y="265" fill="#374151" font-size="11">ana@ritech.com</text>
+  <text x="500" y="265" fill="#3b82f6" font-size="11">Creación</text>
+  <text x="620" y="265" fill="#374151" font-size="11">Productos</text>
+  <text x="750" y="265" fill="#64748b" font-size="11">192.168.1.22</text>
+  <line x1="250" y1="275" x2="870" y2="275" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="295" fill="#374151" font-size="11">29/07/2026 10:03</text>
+  <text x="380" y="295" fill="#374151" font-size="11">carlos@ritech.com</text>
+  <text x="500" y="295" fill="#d97706" font-size="11">Edición</text>
+  <text x="620" y="295" fill="#374151" font-size="11">Pedidos</text>
+  <text x="750" y="295" fill="#64748b" font-size="11">192.168.1.45</text>
+  <line x1="250" y1="305" x2="870" y2="305" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="325" fill="#374151" font-size="11">29/07/2026 11:20</text>
+  <text x="380" y="325" fill="#374151" font-size="11">pedro@ritech.com</text>
+  <text x="500" y="325" fill="#ef4444" font-size="11">Eliminación</text>
+  <text x="620" y="325" fill="#374151" font-size="11">Lotes</text>
+  <text x="750" y="325" fill="#64748b" font-size="11">192.168.1.33</text>
+  <line x1="250" y1="335" x2="870" y2="335" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="355" fill="#374151" font-size="11">29/07/2026 14:45</text>
+  <text x="380" y="355" fill="#374151" font-size="11">ana@ritech.com</text>
+  <text x="500" y="355" fill="#16a34a" font-size="11">Logout</text>
+  <text x="620" y="355" fill="#374151" font-size="11">Auth</text>
+  <text x="750" y="355" fill="#64748b" font-size="11">192.168.1.22</text>
+
+  <rect x="250" y="500" width="80" height="30" rx="6" fill="#1e40af"/>
+  <text x="290" y="519" text-anchor="middle" fill="#fff" font-size="12">← Ant</text>
+  <rect x="340" y="500" width="30" height="30" rx="6" fill="#3b82f6"/>
+  <text x="355" y="519" text-anchor="middle" fill="#fff" font-size="12">1</text>
+  <rect x="380" y="500" width="30" height="30" rx="6" fill="#e2e8f0"/>
+  <text x="395" y="519" text-anchor="middle" fill="#374151" font-size="12">2</text>
+  <rect x="420" y="500" width="30" height="30" rx="6" fill="#e2e8f0"/>
+  <text x="435" y="519" text-anchor="middle" fill="#374151" font-size="12">3</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-05 "Log de auditoría del sistema" | Wireframe | RiTech Export System</text>
+</svg>

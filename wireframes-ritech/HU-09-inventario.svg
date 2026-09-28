@@ -1,0 +1,88 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">GR</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">📊 Dashboard</text>
+  <text x="24" y="150" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <text x="24" y="180" fill="#64748b" font-size="13">📦 Productos</text>
+  <rect x="10" y="190" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="212" fill="#fff" font-size="13">📋 Inventario</text>
+  <text x="24" y="248" fill="#64748b" font-size="13">🏢 Clientes</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Inventario por Producto y Lote</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Vista general del stock disponible para exportación</text>
+
+  <rect x="250" y="140" width="140" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="260" y="161" fill="#64748b" font-size="12">☕ Tipo: Café</text>
+  <rect x="400" y="140" width="140" height="32" rx="6" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="410" y="161" fill="#64748b" font-size="12">📋 Estado: Todos</text>
+  <rect x="550" y="140" width="160" height="32" rx="6" fill="#1e40af"/>
+  <text x="560" y="161" fill="#fff" font-size="12">📥 Exportar Excel</text>
+
+  <rect x="250" y="185" width="200" height="80" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="210" fill="#64748b" font-size="12">Total Productos</text>
+  <text x="270" y="238" fill="#1e293b" font-size="28" font-weight="bold">24</text>
+  <text x="340" y="238" fill="#64748b" font-size="12">tipos</text>
+
+  <rect x="470" y="185" width="200" height="80" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="490" y="210" fill="#64748b" font-size="12">Total Lotes</text>
+  <text x="490" y="238" fill="#1e293b" font-size="28" font-weight="bold">156</text>
+  <text x="555" y="238" fill="#64748b" font-size="12">lotes</text>
+
+  <rect x="690" y="185" width="180" height="80" rx="8" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="710" y="210" fill="#16a34a" font-size="12">Disponibilidad</text>
+  <text x="710" y="238" fill="#16a34a" font-size="28" font-weight="bold">78%</text>
+
+  <rect x="250" y="280" width="620" height="30" rx="6" fill="#e0e7ff"/>
+  <text x="270" y="300" fill="#1e40af" font-size="11" font-weight="600">Producto</text>
+  <text x="420" y="300" fill="#1e40af" font-size="11" font-weight="600">Lote</text>
+  <text x="530" y="300" fill="#1e40af" font-size="11" font-weight="600">Peso (kg)</text>
+  <text x="640" y="300" fill="#1e40af" font-size="11" font-weight="600">Estado</text>
+  <text x="760" y="300" fill="#1e40af" font-size="11" font-weight="600">Trazabilidad</text>
+
+  <text x="270" y="328" fill="#374151" font-size="12">Café Arábica Supremo</text>
+  <text x="420" y="328" fill="#374151" font-size="12">RT-2026-001</text>
+  <text x="530" y="328" fill="#374151" font-size="12">2,500</text>
+  <rect x="635" y="318" width="60" height="18" rx="4" fill="#dcfce7"/>
+  <text x="665" y="331" text-anchor="middle" fill="#16a34a" font-size="9">Disponible</text>
+  <text x="760" y="328" fill="#3b82f6" font-size="11" text-decoration="underline">RT-2026-CAH-001</text>
+  <line x1="250" y1="338" x2="870" y2="338" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="360" fill="#374151" font-size="12">Café Arábica Supremo</text>
+  <text x="420" y="360" fill="#374151" font-size="12">RT-2026-002</text>
+  <text x="530" y="360" fill="#374151" font-size="12">1,800</text>
+  <rect x="635" y="350" width="60" height="18" rx="4" fill="#fef3c7"/>
+  <text x="665" y="363" text-anchor="middle" fill="#d97706" font-size="9">Reservado</text>
+  <text x="760" y="360" fill="#3b82f6" font-size="11" text-decoration="underline">RT-2026-CAH-002</text>
+  <line x1="250" y1="370" x2="870" y2="370" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="392" fill="#374151" font-size="12">Cacao Criollo</text>
+  <text x="420" y="392" fill="#374151" font-size="12">RT-2026-CC-001</text>
+  <text x="530" y="392" fill="#374151" font-size="12">3,200</text>
+  <rect x="635" y="382" width="60" height="18" rx="4" fill="#dcfce7"/>
+  <text x="665" y="395" text-anchor="middle" fill="#16a34a" font-size="9">Disponible</text>
+  <text x="760" y="392" fill="#3b82f6" font-size="11" text-decoration="underline">RT-2026-CC-001</text>
+  <line x1="250" y1="402" x2="870" y2="402" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="424" fill="#374151" font-size="12">Café Robusta</text>
+  <text x="420" y="424" fill="#374151" font-size="12">RT-2026-CR-001</text>
+  <text x="530" y="424" fill="#374151" font-size="12">4,100</text>
+  <rect x="635" y="414" width="55" height="18" rx="4" fill="#dbeafe"/>
+  <text x="662" y="427" text-anchor="middle" fill="#2563eb" font-size="9">Enviado</text>
+  <text x="760" y="424" fill="#3b82f6" font-size="11" text-decoration="underline">RT-2026-CR-001</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-09 "Consulta de inventario por producto y lote" | Wireframe | RiTech Export System</text>
+</svg>

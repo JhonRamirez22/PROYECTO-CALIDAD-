@@ -1,0 +1,90 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">AD</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <rect x="10" y="100" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="122" fill="#fff" font-size="13">🔐 Permisos</text>
+  <text x="24" y="158" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">📦 Productos</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📋 Lotes</text>
+  <text x="24" y="248" fill="#64748b" font-size="13">🏢 Clientes</text>
+  <text x="24" y="278" fill="#64748b" font-size="13">📄 Pedidos</text>
+  <text x="24" y="308" fill="#64748b" font-size="13">📑 Documentos</text>
+  <text x="24" y="338" fill="#64748b" font-size="13">🚢 Logística</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Asignación de Permisos por Módulo</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Configurar permisos de acceso por rol</text>
+
+  <text x="250" y="160" fill="#374151" font-size="14" font-weight="600">Rol: Gerente</text>
+
+  <rect x="250" y="175" width="620" height="36" rx="6" fill="#e0e7ff"/>
+  <text x="270" y="198" fill="#1e40af" font-size="13" font-weight="600">Módulo</text>
+  <text x="500" y="198" fill="#1e40af" font-size="13" font-weight="600" text-anchor="middle">Lectura</text>
+  <text x="620" y="198" fill="#1e40af" font-size="13" font-weight="600" text-anchor="middle">Escritura</text>
+
+  <text x="270" y="233" fill="#374151" font-size="13">📦 Productos</text>
+  <rect x="495" y="222" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="504" y="235" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <rect x="615" y="222" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="624" y="235" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <line x1="250" y1="245" x2="870" y2="245" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="270" fill="#374151" font-size="13">📋 Lotes</text>
+  <rect x="495" y="259" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="504" y="272" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <rect x="615" y="259" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="624" y="272" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <line x1="250" y1="282" x2="870" y2="282" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="307" fill="#374151" font-size="13">🏢 Clientes</text>
+  <rect x="495" y="296" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="504" y="309" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <rect x="615" y="296" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="624" y="309" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <line x1="250" y1="319" x2="870" y2="319" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="344" fill="#374151" font-size="13">📄 Pedidos</text>
+  <rect x="495" y="333" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="504" y="346" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <rect x="615" y="333" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="624" y="346" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <line x1="250" y1="356" x2="870" y2="356" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="381" fill="#374151" font-size="13">📑 Documentos</text>
+  <rect x="495" y="370" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="504" y="383" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <rect x="615" y="370" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="624" y="383" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <line x1="250" y1="393" x2="870" y2="393" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="418" fill="#374151" font-size="13">🚢 Logística</text>
+  <rect x="495" y="407" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="504" y="420" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <rect x="615" y="407" width="18" height="18" rx="3" fill="#ef4444"/>
+  <text x="624" y="420" text-anchor="middle" fill="#fff" font-size="11">✗</text>
+  <line x1="250" y1="430" x2="870" y2="430" stroke="#e2e8f0" stroke-width="1"/>
+
+  <text x="270" y="455" fill="#374151" font-size="13">💰 Facturación</text>
+  <rect x="495" y="444" width="18" height="18" rx="3" fill="#16a34a"/>
+  <text x="504" y="457" text-anchor="middle" fill="#fff" font-size="11">✓</text>
+  <rect x="615" y="444" width="18" height="18" rx="3" fill="#ef4444"/>
+  <text x="624" y="457" text-anchor="middle" fill="#fff" font-size="11">✗</text>
+
+  <rect x="250" y="490" width="180" height="38" rx="6" fill="#1e40af"/>
+  <text x="340" y="514" text-anchor="middle" fill="#fff" font-size="13" font-weight="600">Guardar Permisos</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-03 "Asignación de permisos por módulo" | Wireframe | RiTech Export System</text>
+</svg>

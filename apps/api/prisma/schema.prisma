@@ -1,0 +1,952 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ─── Users & Auth ────────────────────────────────────────
+
+enum UserRole {
+  ADMIN
+  GERENTE
+  OPERADOR
+  CONTADOR
+  PROPIETARIO
+  COMPRADOR
+  VENDEDOR
+  LOGISTICA
+  CLIENTE_PERSONAL
+}
+
+model User {
+  id             String     @id @default(cuid())
+  name           String
+  email          String     @unique
+  password       String
+  roles          UserRole[]
+  active         Boolean    @default(true)
+  failedAttempts Int        @default(0)
+  lockedUntil    DateTime?
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+
+  approvedOrders          Order[]                     @relation("ApprovedBy")
+  passwordResetTokens     PasswordResetToken[]
+  sellerProfile           SellerProfile?
+  ownedLots               Lot[]                       @relation("LotOwner")
+  qualityVerifications    QualitySampleVerification[] @relation("QualityVerifier")
+  commissions             Commission[]
+  client                  Client?
+  soldOrders              Order[]                     @relation("Seller")
+  notifications           Notification[]
+  notificationPreferences NotificationPreferences?
+}
+
+// ─── Permissions (RBAC) ─────────────────────────────────
+
+model Permission {
+  id        String   @id @default(cuid())
+  role      UserRole
+  module    String
+  canCreate Boolean  @default(false)
+  canRead   Boolean  @default(true)
+  canUpdate Boolean  @default(false)
+  canDelete Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([role, module])
+}
+
+// ─── Audit Log ──────────────────────────────────────────
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  APPROVE
+  REJECT
+  PAYMENT
+}
+
+model AuditLog {
+  id        String      @id @default(cuid())
+  userId    String?
+  userName  String?
+  action    AuditAction
+  module    String
+  entityId  String?
+  oldValues Json?
+  newValues Json?
+  ipAddress String?
+  createdAt DateTime    @default(now())
+
+  @@index([userId])
+  @@index([module])
+  @@index([createdAt])
+  @@index([action])
+}
+
+// ─── Password Reset Tokens ──────────────────────────────
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  userId    String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+}
+
+// ─── Products ────────────────────────────────────────────
+
+enum ProductType {
+  CAFE
+  CACAO
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  type        ProductType
+  variety     String
+  origin      String
+  altitude    String?
+  process     String?
+  description String?
+  active      Boolean     @default(true)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  lots         Lot[]
+  orderItems   OrderItem[]
+  certificates Certificate[]
+  cartItems    CartItem[]
+
+  @@unique([variety, origin])
+}
+
+// ─── Lots (Trazabilidad) ─────────────────────────────────
+
+enum LotStatus {
+  DISPONIBLE
+  RESERVADO
+  ENVIADO
+  CERTIFICADO
+}
+
+model Lot {
+  id               String    @id @default(cuid())
+  traceabilityCode String    @unique
+  productId        String
+  ownedById        String? // PROPIETARIO dueño del lote
+  weight           Decimal   @db.Decimal(10, 2)
+  harvestDate      DateTime?
+  processDate      DateTime?
+  originLocation   String?
+  status           LotStatus @default(DISPONIBLE)
+  notes            String?
+  exportPrice      Decimal?  @db.Decimal(10, 2) // Precio de exportación por kg
+  currency         Currency? @default(EUR)
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  product             Product                     @relation(fields: [productId], references: [id])
+  owner               User?                       @relation("LotOwner", fields: [ownedById], references: [id])
+  orderItems          OrderItem[]
+  certificates        Certificate[]
+  qualityAnalyses     QualityAnalysis[]
+  sampleVerifications QualitySampleVerification[]
+  cartItems           CartItem[]
+  eudrDocs            EUDRDocument[]
+
+  @@index([productId])
+  @@index([status])
+  @@index([ownedById])
+}
+
+// ─── Clients (Compradores EU) ────────────────────────────
+
+enum ClientStatus {
+  ACTIVO
+  INACTIVO
+}
+
+model Client {
+  id        String       @id @default(cuid())
+  userId    String?      @unique // vincula al User si tiene login (COMPRADOR)
+  company   String
+  address   String
+  country   String
+  vatId     String       @unique
+  phone     String?
+  email     String?
+  status    ClientStatus @default(ACTIVO)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  user      User?            @relation(fields: [userId], references: [id])
+  contacts  ClientContact[]
+  contracts ClientContract[]
+  orders    Order[]
+
+  @@index([country])
+  @@index([status])
+  @@index([userId])
+}
+
+model ClientContact {
+  id        String  @id @default(cuid())
+  clientId  String
+  name      String
+  position  String?
+  email     String?
+  phone     String?
+  role      String  @default("compras")
+  isPrimary Boolean @default(false)
+
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  @@index([clientId])
+}
+
+enum ClientContractStatus {
+  BORRADOR
+  ACTIVO
+  VENCIDO
+  CANCELADO
+}
+
+model ClientContract {
+  id             String               @id @default(cuid())
+  clientId       String
+  contractNumber String               @unique
+  status         ClientContractStatus @default(BORRADOR)
+  startDate      DateTime
+  endDate        DateTime?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+
+  client Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
+
+  @@index([clientId])
+  @@index([status])
+  @@index([endDate])
+}
+
+// ─── Orders (Pedidos de Exportación) ─────────────────────
+
+enum OrderStatus {
+  BORRADOR
+  PENDIENTE_APROBACION
+  CONFIRMADO
+  RECHAZADO
+  ENVIADO
+  ENTREGADO
+  CANCELADO
+  PAGADO
+}
+
+enum PaymentStatus {
+  PENDIENTE
+  PROCESANDO
+  COMPLETADO
+  FALLIDO
+  REEMBOLSADO
+}
+
+enum Incoterm {
+  FOB
+  CFR
+  CIF
+  EXW
+  FCA
+  CPT
+  CIP
+  DAP
+  DDP
+  DPU
+}
+
+enum Currency {
+  EUR
+  USD
+  COP
+}
+
+model Order {
+  id                    String        @id @default(cuid())
+  orderNumber           String        @unique
+  clientId              String
+  sellerId              String? // VENDEDOR que realizó la venta
+  status                OrderStatus   @default(BORRADOR)
+  incoterm              Incoterm      @default(FOB)
+  currency              Currency      @default(EUR)
+  notes                 String?
+  totalAmount           Decimal?      @db.Decimal(12, 2)
+  paymentStatus         PaymentStatus @default(PENDIENTE)
+  stripeSessionId       String?
+  stripePaymentIntentId String?
+  paidAt                DateTime?
+  approvedById          String?
+  approvedAt            DateTime?
+  rejectReason          String?
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  client         Client          @relation(fields: [clientId], references: [id])
+  seller         User?           @relation("Seller", fields: [sellerId], references: [id])
+  approvedBy     User?           @relation("ApprovedBy", fields: [approvedById], references: [id])
+  items          OrderItem[]
+  invoices       Invoice[]
+  commission     Commission?
+  logistics      LogisticsEntry?
+  documents      Document[]
+  shipmentOrders ShipmentOrder[]
+
+  @@index([clientId])
+  @@index([sellerId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id           String   @id @default(cuid())
+  orderId      String
+  productId    String
+  lotId        String?
+  quantity     Decimal  @db.Decimal(10, 2)
+  unitPrice    Decimal  @db.Decimal(10, 2)
+  packageCount Int?
+  grossWeight  Decimal? @db.Decimal(10, 2)
+  dimensions   String?
+  marks        String?
+
+  order   Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+  lot     Lot?    @relation(fields: [lotId], references: [id])
+
+  @@index([orderId])
+}
+
+// ─── Certificates ────────────────────────────────────────
+
+enum CertificateType {
+  // Certificados de producto/lote
+  ORGANICO
+  FAIR_TRADE
+  RAINFOREST_ALLIANCE
+  ORIGEN
+  FITOSANITARIO
+  EUDR
+  CALIDAD
+  ORIGIN_CERTIFICATION
+  // Certificados de finca (PROPIETARIO)
+  FINCA_ORGANICO
+  FINCA_FAIR_TRADE
+  FINCA_RAINFOREST
+  FINCA_EUDR
+  FINCA_SOSTENIBILIDAD
+  FINCA_CAPACIDAD
+}
+
+model Certificate {
+  id              String          @id @default(cuid())
+  productId       String?
+  lotId           String?
+  shipmentId      String?
+  type            CertificateType
+  number          String
+  issuer          String
+  documentFormat  String?
+  countryOfOrigin String?
+  issuedAt        DateTime
+  expiresAt       DateTime?
+  fileUrl         String?
+  notes           String?
+  createdAt       DateTime        @default(now())
+
+  product  Product?  @relation(fields: [productId], references: [id])
+  lot      Lot?      @relation(fields: [lotId], references: [id])
+  shipment Shipment? @relation(fields: [shipmentId], references: [id])
+
+  @@index([productId])
+  @@index([lotId])
+  @@index([shipmentId])
+  @@index([type])
+}
+
+// ─── Quality Analysis (SCA Cupping) ──────────────────────
+
+model QualityAnalysis {
+  id         String   @id @default(cuid())
+  lotId      String
+  analyst    String
+  analyzedAt DateTime @default(now())
+  fragrance  Int
+  flavor     Int
+  aftertaste Int
+  acidity    Int
+  body       Int
+  balance    Int
+  uniformity Int
+  sweetness  Int
+  cleanCup   Int
+  overall    Int
+  totalScore Decimal  @db.Decimal(5, 2)
+  defects    Int      @default(0)
+  notes      String?
+  createdAt  DateTime @default(now())
+
+  lot Lot @relation(fields: [lotId], references: [id], onDelete: Cascade)
+
+  @@index([lotId])
+  @@index([totalScore])
+}
+
+// ─── Quality Sample Verification ────────────────────────
+
+enum SampleVerificationStatus {
+  PENDIENTE
+  APROBADO
+  RECHAZADO
+}
+
+model QualitySampleVerification {
+  id                   String                   @id @default(cuid())
+  lotId                String                   @unique
+  verifierId           String?
+  status               SampleVerificationStatus @default(PENDIENTE)
+  samplePhoto          String?
+  sampleNotes          String?
+  verifiedAt           DateTime?
+  rejectReason         String?
+  ownerSamplePhoto     String?
+  ownerSampleNotes     String?
+  verifierSamplePhoto  String?
+  verifierSampleNotes  String?
+  matches              Boolean?
+  matchTolerancePoints Int                      @default(2)
+  verifiedById         String?
+  createdAt            DateTime                 @default(now())
+  updatedAt            DateTime                 @updatedAt
+
+  lot      Lot   @relation(fields: [lotId], references: [id], onDelete: Cascade)
+  verifier User? @relation("QualityVerifier", fields: [verifierId], references: [id])
+
+  @@index([lotId])
+  @@index([verifierId])
+  @@index([status])
+}
+
+// ─── Seller Profile (VENDEDOR) ──────────────────────────
+
+enum DeforestationStatus {
+  CERTIFICADO_LIBRE
+  EN_EVALUACION
+  NO_CERTIFICADO
+}
+
+model SellerProfile {
+  id                  String              @id @default(cuid())
+  userId              String              @unique
+  farmName            String
+  farmLocation        String
+  productionCapacity  Decimal             @db.Decimal(10, 2)
+  coffeeType          String?
+  coffeeVariety       String?
+  qualityGrade        String?
+  deforestationStatus DeforestationStatus @default(EN_EVALUACION)
+  deforestationProof  String?
+  bankAccount         String?
+  bankName            String?
+  commissionRate      Decimal?            @db.Decimal(5, 4)
+  onboardingComplete  Boolean             @default(false)
+  notes               String?
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @updatedAt
+
+  user             User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  farmCertificates FarmCertificate[]
+
+  @@index([userId])
+}
+
+// ─── Farm Certificates (PROPIETARIO sube) ───────────────
+
+model FarmCertificate {
+  id              String          @id @default(cuid())
+  sellerProfileId String
+  type            CertificateType
+  number          String
+  issuer          String
+  issuedAt        DateTime
+  expiresAt       DateTime?
+  fileUrl         String?
+  notes           String?
+  createdAt       DateTime        @default(now())
+
+  sellerProfile SellerProfile @relation(fields: [sellerProfileId], references: [id], onDelete: Cascade)
+
+  @@index([sellerProfileId])
+  @@index([type])
+}
+
+// ─── Commissions ────────────────────────────────────────
+
+enum CommissionStatus {
+  PENDIENTE
+  PAGADA
+  CANCELADA
+}
+
+model Commission {
+  id         String           @id @default(cuid())
+  orderId    String           @unique
+  sellerId   String
+  amount     Decimal          @db.Decimal(12, 2)
+  percentage Decimal          @db.Decimal(5, 2) // Porcentaje de comisión
+  status     CommissionStatus @default(PENDIENTE)
+  paidAt     DateTime?
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  order  Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  seller User  @relation(fields: [sellerId], references: [id])
+
+  @@index([orderId])
+  @@index([sellerId])
+  @@index([status])
+}
+
+// ─── Logistics ──────────────────────────────────────────
+
+enum LogisticsStatus {
+  REGISTRADO
+  EN_TRANSITO
+  EN_ADUANA
+  ENTREGADO
+  CANCELADO
+}
+
+model LogisticsEntry {
+  id             String          @id @default(cuid())
+  orderId        String          @unique
+  status         LogisticsStatus @default(REGISTRADO)
+  transporter    String? // Nombre empresa transportista
+  trackingNumber String? // Número de tracking
+  originPort     String? // Puerto de origen (ej: Buenaventura)
+  destPort       String? // Puerto destino UE
+  departureDate  DateTime?
+  arrivalDate    DateTime?
+  notes          String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@index([orderId])
+  @@index([status])
+}
+
+// ─── Invoices (Facturación) ──────────────────────────────
+
+enum InvoiceType {
+  PROFORMA
+  COMMERCIAL
+  CREDIT_NOTE
+}
+
+enum InvoiceStatus {
+  PENDIENTE
+  PARCIAL
+  PAGADA
+  VENCIDA
+}
+
+model Invoice {
+  id            String        @id @default(cuid())
+  invoiceNumber String        @unique
+  orderId       String
+  type          InvoiceType
+  status        InvoiceStatus @default(PENDIENTE)
+  amount        Decimal       @db.Decimal(12, 2)
+  currency      Currency      @default(EUR)
+  dueDate       DateTime?
+  validUntil    DateTime?
+  paidAt        DateTime?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id])
+
+  @@index([orderId])
+  @@index([status])
+}
+
+// ─── Cart (B2B Session Cart) ─────────────────────────────
+
+model CartItem {
+  id        String   @id @default(cuid())
+  sessionId String
+  productId String
+  lotId     String?
+  quantity  Decimal  @db.Decimal(10, 2)
+  unitPrice Decimal  @db.Decimal(12, 2)
+  currency  Currency @default(EUR)
+
+  product Product @relation(fields: [productId], references: [id])
+  lot     Lot?    @relation(fields: [lotId], references: [id])
+
+  @@unique([sessionId, productId, lotId])
+  @@index([sessionId])
+}
+
+// ─── Logistics Providers (Transportistas / Aseguradoras) ──
+
+enum ProviderType {
+  TRANSPORTISTA
+  ASEGURADORA
+  TRANSITARIO
+}
+
+model LogisticsProvider {
+  id            String       @id @default(cuid())
+  name          String
+  type          ProviderType
+  taxId         String? // NIF/CIF
+  contactName   String?
+  contactEmail  String?
+  contactPhone  String?
+  // Aseguradora-specific
+  policyNumber  String?
+  policyExpiry  DateTime?
+  insuredAmount Decimal?     @db.Decimal(12, 2)
+  active        Boolean      @default(true)
+  notes         String?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  shipments Shipment[]
+  bookings  BookingConfirmation[]
+
+  @@index([type])
+  @@index([active])
+}
+
+// ─── Shipping Destinations (Puertos UE) ───────────────────
+
+enum ContainerType {
+  REFRIGERADO_20
+  REFRIGERADO_40
+  ESTANDAR_20
+  ESTANDAR_40
+  HC_40
+  GRANELERO
+}
+
+enum ShipmentMode {
+  FTL
+  LCL
+}
+
+model ShippingDestination {
+  id                  String        @id @default(cuid())
+  name                String
+  city                String
+  country             String
+  portCode            String? // IATA/código de puerto
+  address             String?
+  requiresTempControl Boolean       @default(false)
+  tempMinC            Int?
+  tempMaxC            Int?
+  defaultContainer    ContainerType @default(ESTANDAR_20)
+  defaultMode         ShipmentMode  @default(FTL)
+  incotermDefault     Incoterm      @default(FOB)
+  certificateFormats String[]      @default([])
+  active              Boolean       @default(true)
+  notes               String?
+  createdAt           DateTime      @default(now())
+  updatedAt           DateTime      @updatedAt
+
+  shipments Shipment[]
+  bookings  BookingConfirmation[]
+
+  @@index([country])
+  @@index([active])
+}
+
+// ─── Shipments (Embarques con Pooling / Split) ────────────
+
+enum ShipmentStatus {
+  BORRADOR
+  CONSOLIDADO
+  CONFIRMADO
+  EN_TRANSITO
+  EN_ADUANA
+  ENTREGADO
+  CANCELADO
+}
+
+model Shipment {
+  id               String         @id @default(cuid())
+  shipmentNumber   String         @unique
+  status           ShipmentStatus @default(BORRADOR)
+  destinationId    String
+  providerId       String?
+  containerType    ContainerType  @default(ESTANDAR_20)
+  containerNumber  String?
+  mode             ShipmentMode   @default(FTL)
+  needsTempControl Boolean        @default(false)
+  tempMinC         Int?
+  tempMaxC         Int?
+  departureDate    DateTime?
+  arrivalDate      DateTime?
+  estimatedArrival DateTime?
+  insurancePolicy  String?
+  notes            String?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  destination  ShippingDestination  @relation(fields: [destinationId], references: [id])
+  provider     LogisticsProvider?   @relation(fields: [providerId], references: [id])
+  orders       ShipmentOrder[]
+  booking      BookingConfirmation?
+  customsDocs  CustomsDocument[]
+  eudrDocs     EUDRDocument[]
+  certificates Certificate[]
+  documents    Document[]
+
+  @@index([status])
+  @@index([destinationId])
+  @@index([providerId])
+}
+
+// ─── Shipment ↔ Order Junction (Pooling / Split) ─────────
+
+model ShipmentOrder {
+  id         String   @id @default(cuid())
+  shipmentId String
+  orderId    String
+  createdAt  DateTime @default(now())
+
+  shipment Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  order    Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  @@unique([shipmentId, orderId])
+  @@index([shipmentId])
+  @@index([orderId])
+}
+
+// ─── Booking Confirmation & Tracking ──────────────────────
+
+enum BookingStatus {
+  PENDIENTE
+  CONFIRMADO
+  CANCELADO
+  COMPLETADO
+}
+
+model BookingConfirmation {
+  id              String        @id @default(cuid())
+  shipmentId      String        @unique
+  destinationId   String
+  bookingNumber   String?       @unique
+  providerId      String?
+  containerNumber String?
+  eta             DateTime?
+  status          BookingStatus @default(PENDIENTE)
+  trackingUrl     String?
+  emotionalNote   String? // "Emotional delivery" nota
+  photoUrl        String? // Foto del contenedor
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  shipment    Shipment            @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  destination ShippingDestination @relation(fields: [destinationId], references: [id])
+  provider    LogisticsProvider?  @relation(fields: [providerId], references: [id])
+
+  @@index([shipmentId])
+  @@index([status])
+}
+
+// ─── Customs Documents (DUA / SAD) ───────────────────────
+
+enum CustomsDocType {
+  DUA
+  SAD
+}
+
+enum CustomsDocStatus {
+  BORRADOR
+  GENERADO
+  PRESENTADO
+  APROBADO
+  RECHAZADO
+}
+
+model CustomsDocument {
+  id             String           @id @default(cuid())
+  shipmentId     String
+  type           CustomsDocType
+  documentNumber String?          @unique
+  status         CustomsDocStatus @default(BORRADOR)
+  exporterInfo   Json? // Datos del exportador
+  importerInfo   Json? // Datos del importador
+  goodsInfo      Json? // Descripción de mercancía
+  fileUrl        String?
+  notes          String?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  shipment Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+
+  @@index([shipmentId])
+  @@index([type])
+  @@index([status])
+}
+
+// ─── EUDR Documents (EU Deforestation Regulation) ─────────
+
+enum EUDRDocStatus {
+  BORRADOR
+  GENERADO
+  VALIDADO
+  RECHAZADO
+}
+
+model EUDRDocument {
+  id                    String        @id @default(cuid())
+  shipmentId            String
+  lotId                 String?
+  status                EUDRDocStatus @default(BORRADOR)
+  gpsLatitude           Decimal?      @db.Decimal(10, 7)
+  gpsLongitude          Decimal?      @db.Decimal(10, 7)
+  harvestDate           DateTime?
+  deforestationEvidence String? // URL evidencia no deforestación
+  declarationText       String? // Texto de declaración
+  fileUrl               String?
+  notes                 String?
+  createdAt             DateTime      @default(now())
+  updatedAt             DateTime      @updatedAt
+
+  shipment Shipment @relation(fields: [shipmentId], references: [id], onDelete: Cascade)
+  lot      Lot?     @relation(fields: [lotId], references: [id])
+
+  @@index([shipmentId])
+  @@index([lotId])
+  @@index([status])
+}
+
+// ─── Documents (Certificados de Exportación) ──────────────
+
+enum DocumentType {
+  ORIGEN
+  FITOSANITARIO
+  EUDR
+  CALIDAD
+  COMERCIAL
+  PACKING_LIST
+}
+
+enum DocumentStatus {
+  BORRADOR
+  GENERADO
+  VALIDADO
+  RECHAZADO
+}
+
+model Document {
+  id        String         @id @default(cuid())
+  orderId   String
+  shipmentId String?
+  type      DocumentType
+  number    String         @unique
+  status    DocumentStatus @default(BORRADOR)
+  issuedBy  String?
+  issuedAt  DateTime?
+  expiresAt DateTime?
+  fileUrl   String?
+  notes     String?
+  metadata  Json?
+  createdAt DateTime       @default(now())
+  updatedAt DateTime       @updatedAt
+
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  shipment Shipment? @relation(fields: [shipmentId], references: [id], onDelete: SetNull)
+
+  @@index([orderId])
+  @@index([shipmentId])
+  @@index([type])
+  @@index([status])
+}
+
+// ─── Notifications ────────────────────────────────────────
+
+enum NotificationType {
+  ORDER_STATUS_CHANGE
+  DOCUMENT_UPLOAD
+  CERTIFICATE_EXPIRY
+  SYSTEM_ALERT
+}
+
+enum NotificationPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum NotificationFrequency {
+  INSTANT
+  DAILY
+  WEEKLY
+}
+
+model Notification {
+  id        String               @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  message   String
+  priority  NotificationPriority @default(MEDIUM)
+  read      Boolean              @default(false)
+  link      String?
+  metadata  Json?
+  createdAt DateTime             @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([type])
+  @@index([read])
+  @@index([createdAt])
+}
+
+model NotificationPreferences {
+  id                     String                @id @default(cuid())
+  userId                 String                @unique
+  orderStatusEmail       Boolean               @default(true)
+  orderStatusInApp       Boolean               @default(true)
+  documentUploadEmail    Boolean               @default(true)
+  documentUploadInApp    Boolean               @default(true)
+  certificateExpiryEmail Boolean               @default(true)
+  certificateExpiryInApp Boolean               @default(true)
+  systemAlertEmail       Boolean               @default(true)
+  systemAlertInApp       Boolean               @default(true)
+  frequency              NotificationFrequency @default(INSTANT)
+  additionalRecipients   String[]
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

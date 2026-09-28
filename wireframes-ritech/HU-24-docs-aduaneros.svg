@@ -1,0 +1,71 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">OP</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <rect x="10" y="130" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="152" fill="#fff" font-size="13">📜 Documentos</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">📄 Pedidos</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">🚢 Logística</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Documentos Aduaneros</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Documentación requerida para despacho aduanero</text>
+
+  <rect x="250" y="145" width="620" height="45" rx="6" fill="#e0e7ff"/>
+  <text x="270" y="167" fill="#1e40af" font-size="11" font-weight="600">Pedido PED-2026-045 · Berliner Rösterei GmbH · € 26,500 CIF</text>
+
+  <rect x="250" y="205" width="290" height="180" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="230" fill="#374151" font-size="13" font-weight="600">Documentos Generados</text>
+  <rect x="270" y="245" width="250" height="30" rx="4" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="285" y="265" fill="#16a34a" font-size="11">✅ Commercial Invoice CI-2026-045</text>
+  <rect x="270" y="282" width="250" height="30" rx="4" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="285" y="302" fill="#16a34a" font-size="11">✅ Packing List PL-2026-045</text>
+  <rect x="270" y="319" width="250" height="30" rx="4" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="285" y="339" fill="#16a34a" font-size="11">✅ Certificado Origen CO-2026-001</text>
+  <rect x="270" y="356" width="250" height="30" rx="4" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="285" y="376" fill="#16a34a" font-size="11">✅ Cert. Fitosanitario CF-2026-001</text>
+
+  <rect x="560" y="205" width="290" height="180" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="580" y="230" fill="#374151" font-size="13" font-weight="600">Documentos Pendientes</text>
+  <rect x="580" y="245" width="250" height="30" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="595" y="265" fill="#d97706" font-size="11">⚠️ Declaración de Exportación (DEX)</text>
+  <rect x="580" y="282" width="250" height="30" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="595" y="302" fill="#d97706" font-size="11">⚠️ Lista de Empaque Consolidada</text>
+  <rect x="580" y="319" width="250" height="30" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="595" y="339" fill="#d97706" font-size="11">⚠️ Póliza de Seguro Marítimo</text>
+  <rect x="580" y="356" width="250" height="30" rx="4" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="595" y="376" fill="#d97706" font-size="11">⚠️ Conocimiento de Embarque (BL)</text>
+
+  <rect x="250" y="400" width="620" height="145" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="425" fill="#374151" font-size="13" font-weight="600">Generar Documento Aduanero</text>
+  <text x="270" y="450" fill="#64748b" font-size="11">Tipo de documento:</text>
+  <rect x="400" y="440" width="150" height="28" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="410" y="459" fill="#94a3b8" font-size="11">DEX - Declaración</text>
+  <text x="570" y="450" fill="#64748b" font-size="11">Formato:</text>
+  <rect x="630" y="440" width="100" height="28" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="640" y="459" fill="#94a3b8" font-size="11">PDF</text>
+  <rect x="740" y="440" width="110" height="28" rx="4" fill="#1e40af"/>
+  <text x="795" y="459" text-anchor="middle" fill="#fff" font-size="11">Generar</text>
+
+  <text x="270" y="490" fill="#64748b" font-size="11">Agente Aduanal:</text>
+  <rect x="380" y="480" width="180" height="28" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="390" y="499" fill="#94a3b8" font-size="11">Seleccionar agente...</text>
+  <text x="580" y="490" fill="#64748b" font-size="11">N° DUA:</text>
+  <rect x="640" y="480" width="200" height="28" rx="4" fill="#fff" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="650" y="499" fill="#94a3b8" font-size="11">Pendiente de asignar</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-24 "Generación de documentos aduaneros" | Wireframe | RiTech Export System</text>
+</svg>

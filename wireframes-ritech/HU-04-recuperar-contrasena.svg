@@ -1,0 +1,31 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+
+  <rect x="275" y="120" width="350" height="360" rx="10" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="425" y="145" width="50" height="50" rx="25" fill="#fef3c7"/>
+  <text x="450" y="178" text-anchor="middle" fill="#d97706" font-size="24">🔑</text>
+
+  <text x="450" y="225" text-anchor="middle" fill="#1e293b" font-size="20" font-weight="bold">Recuperar Contraseña</text>
+  <text x="450" y="248" text-anchor="middle" fill="#64748b" font-size="13">Ingresa tu email para recibir un enlace</text>
+
+  <text x="310" y="285" fill="#374151" font-size="13" font-weight="600">Correo Electrónico</text>
+  <rect x="310" y="295" width="280" height="40" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="320" y="320" fill="#94a3b8" font-size="13">usuario@ritech.com</text>
+
+  <rect x="310" y="355" width="280" height="42" rx="6" fill="#1e40af"/>
+  <text x="450" y="381" text-anchor="middle" fill="#fff" font-size="14" font-weight="600">Enviar Enlace de Recuperación</text>
+
+  <text x="450" y="425" text-anchor="middle" fill="#64748b" font-size="12">¿Recordaste tu contraseña?</text>
+  <text x="450" y="445" text-anchor="middle" fill="#3b82f6" font-size="12" font-weight="600">Volver al Login</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-04 "Recuperación de contraseña por email" | Wireframe | RiTech Export System</text>
+</svg>

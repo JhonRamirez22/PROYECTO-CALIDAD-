@@ -1,0 +1,64 @@
+<svg viewBox="0 0 900 600" xmlns="http://www.w3.org/2000/svg" font-family="system-ui, Arial">
+  <defs>
+    <linearGradient id="hdr" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="56" fill="url(#hdr)"/>
+  <text x="30" y="36" fill="#fff" font-size="22" font-weight="bold">RiTech</text>
+  <text x="120" y="36" fill="#ffffff99" font-size="13">Sistema de Exportación de Café y Cacao</text>
+  <circle cx="850" cy="28" r="16" fill="#ffffff22"/>
+  <text x="845" y="34" fill="#fff" font-size="14">OP</text>
+
+  <rect x="0" y="56" width="200" height="544" fill="#1e293b"/>
+  <text x="20" y="88" fill="#94a3b8" font-size="11" font-weight="600">MENÚ</text>
+  <text x="24" y="120" fill="#64748b" font-size="13">👤 Usuarios</text>
+  <rect x="10" y="130" width="180" height="34" rx="6" fill="#334155"/>
+  <text x="24" y="152" fill="#fff" font-size="13">📜 Documentos</text>
+  <text x="24" y="188" fill="#64748b" font-size="13">🌿 EUDR</text>
+  <text x="24" y="218" fill="#64748b" font-size="13">📦 Productos</text>
+
+  <rect x="220" y="70" width="660" height="490" rx="10" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="250" y="105" fill="#1e293b" font-size="20" font-weight="bold">Gestión de Documentos EUDR</text>
+  <text x="250" y="125" fill="#64748b" font-size="13">Regulación Europea de Deforestación (EU 2023/1115)</text>
+
+  <rect x="250" y="145" width="620" height="50" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="270" y="170" fill="#16a34a" font-size="12" font-weight="600">✅ EUDR合规: Todos los lotes activos tienen documentación completa</text>
+  <text x="270" y="186" fill="#64748b" font-size="10">Última verificación: 20/07/2026 14:30</text>
+
+  <rect x="250" y="210" width="620" height="100" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="235" fill="#374151" font-size="14" font-weight="600">Requisitos EUDR por Producto</text>
+  <rect x="270" y="248" width="200" height="22" rx="4" fill="#dcfce7"/>
+  <text x="280" y="264" fill="#16a34a" font-size="11">✅ Geolocalización de fincas</text>
+  <rect x="490" y="248" width="200" height="22" rx="4" fill="#dcfce7"/>
+  <text x="500" y="264" fill="#16a34a" font-size="11">✅ Due diligence completado</text>
+  <rect x="270" y="278" width="200" height="22" rx="4" fill="#dcfce7"/>
+  <text x="280" y="294" fill="#16a34a" font-size="11">✅ Evaluación de riesgo</text>
+  <rect x="490" y="278" width="200" height="22" rx="4" fill="#dcfce7"/>
+  <text x="500" y="294" fill="#16a34a" font-size="11">✅ Información de trazabilidad</text>
+
+  <rect x="250" y="320" width="620" height="225" rx="8" fill="#fff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="345" fill="#374151" font-size="14" font-weight="600">Lotes y Estado EUDR</text>
+
+  <rect x="270" y="358" width="580" height="55" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="290" y="378" fill="#16a34a" font-size="12" font-weight="600">RT-2026-001 · Café Arábica Supremo</text>
+  <text x="290" y="396" fill="#64748b" font-size="10">Finca La Esperanza, Huila · GPS: 2.5347° N, 75.5200° W · Estado: ✅ Cumple</text>
+  <rect x="780" y="370" width="50" height="22" rx="4" fill="#16a34a"/>
+  <text x="805" y="385" text-anchor="middle" fill="#fff" font-size="9">OK</text>
+
+  <rect x="270" y="420" width="580" height="55" rx="6" fill="#dcfce7" stroke="#86efac" stroke-width="1"/>
+  <text x="290" y="440" fill="#16a34a" font-size="12" font-weight="600">RT-2026-CC-001 · Cacao Criollo</text>
+  <text x="290" y="458" fill="#64748b" font-size="10">Finca El Paraíso, Santander · GPS: 6.4237° N, 73.2511° W · Estado: ✅ Cumple</text>
+  <rect x="780" y="432" width="50" height="22" rx="4" fill="#16a34a"/>
+  <text x="805" y="447" text-anchor="middle" fill="#fff" font-size="9">OK</text>
+
+  <rect x="270" y="482" width="580" height="55" rx="6" fill="#fef3c7" stroke="#fcd34d" stroke-width="1"/>
+  <text x="290" y="502" fill="#d97706" font-size="12" font-weight="600">RT-2026-003 · Café Robusta</text>
+  <text x="290" y="520" fill="#64748b" font-size="10">Finca San José, Nariño · GPS pendiente · Estado: ⚠️ Pendiente geolocalización</text>
+  <rect x="780" y="494" width="50" height="22" rx="4" fill="#d97706"/>
+  <text x="805" y="509" text-anchor="middle" fill="#fff" font-size="9">Pend</text>
+
+  <rect x="0" y="570" width="900" height="30" fill="#f1f5f9"/>
+  <text x="450" y="590" text-anchor="middle" fill="#94a3b8" font-size="11">HU-25 "Gestión de documentos EUDR" | Wireframe | RiTech Export System</text>
+</svg>
