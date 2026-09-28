@@ -4,6 +4,8 @@ The production compose stack runs Next.js, NestJS, and PostgreSQL on one EC2 ins
 
 ## Continuous deployment
 
+The site is available at <https://d3preziqjebh2s.cloudfront.net>. CloudFront provides the HTTPS viewer URL; the EC2 origin uses a static IP and only accepts CloudFront origin traffic.
+
 The GitHub Actions workflow `.github/workflows/deploy.yml` deploys every push to `main`. It assumes the IAM role `ritech-github-deploy` through GitHub OIDC, finds the instance by its `Name=ritech-web` tag, and asks Systems Manager to run `/usr/local/bin/ritech-deploy update`. No AWS access keys or GitHub secrets are required.
 
 The deployment script fast-forwards the checkout, runs `prisma migrate deploy`, rebuilds the API and web images, then restarts the Compose stack. Do not replace this migration with `prisma db push`.
@@ -21,4 +23,4 @@ sudo docker compose --env-file /opt/ritech/app/.env.production \
 
 Database files live at `/var/lib/ritech/postgres`; uploads live at `/var/lib/ritech/storage`. Take and test encrypted EBS snapshots before important data changes. The instance and database are single-AZ and are not highly available. Add automated backups, monitoring, managed PostgreSQL, and a multi-AZ frontend/API architecture before treating this as a production service with critical data.
 
-The public HTTP origin can be fronted by a CloudFront distribution using its free `cloudfront.net` hostname and HTTPS viewer connection. The EC2 origin should only accept traffic from the CloudFront origin-facing managed prefix list after the distribution is ready.
+CloudFront serves HTTPS at the free `cloudfront.net` hostname. The EC2 origin security group allows port 80 only from AWS’s CloudFront origin-facing managed prefix list.

@@ -97,7 +97,8 @@ services:
       dockerfile: apps/api/Dockerfile
     env_file:
       - ../../../.env.production
-      - ../../../.env.admin
+      - path: ../../../.env.admin
+        required: false
     environment:
       NODE_ENV: production
     command: ["npm", "run", "bootstrap:admin", "--workspace=apps/api"]
