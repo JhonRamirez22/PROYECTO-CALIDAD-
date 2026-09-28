@@ -47,3 +47,5 @@ apps/api/prisma/seed.d.ts
 .Spotlight-V100
 .Trashes
 .vercel
+.env.production
+.env.admin

@@ -6,7 +6,7 @@ The production compose stack runs Next.js, NestJS, and PostgreSQL on one EC2 ins
 
 The site is available at <https://d3preziqjebh2s.cloudfront.net>. CloudFront provides the HTTPS viewer URL; the EC2 origin uses a static IP and only accepts CloudFront origin traffic.
 
-The GitHub Actions workflow `.github/workflows/deploy.yml` deploys every push to `main`. It assumes the IAM role `ritech-github-deploy` through GitHub OIDC, finds the instance by its `Name=ritech-web` tag, and asks Systems Manager to run `/usr/local/bin/ritech-deploy update`. No AWS access keys or GitHub secrets are required.
+The GitHub Actions workflow `.github/workflows/deploy.yml` deploys every push to `main`. It assumes the IAM role `ritech-github-deploy` through GitHub OIDC, finds the instance by its `Name=ritech-web` tag, and asks Systems Manager to run `/usr/local/bin/ritech-deploy update`. No AWS access keys or GitHub secrets are required. The IAM trust is pinned to this GitHub repository’s immutable IDs and the `main` branch; update it if the repository is transferred or recreated.
 
 The deployment script fast-forwards the checkout, runs `prisma migrate deploy`, rebuilds the API and web images, then restarts the Compose stack. Do not replace this migration with `prisma db push`.
 
