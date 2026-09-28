@@ -1,0 +1,68 @@
+name: Deploy to AWS
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: aws-production-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure temporary AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::762911134095:role/ritech-github-deploy
+          aws-region: us-east-1
+
+      - name: Find the deployment instance
+        id: instance
+        shell: bash
+        run: |
+          instance_id="$(aws ec2 describe-instances \
+            --filters 'Name=tag:Name,Values=ritech-web' 'Name=instance-state-name,Values=running' \
+            --query 'Reservations[].Instances[].InstanceId | [0]' --output text)"
+          if [[ -z "$instance_id" || "$instance_id" == "None" ]]; then
+            echo "No running EC2 instance with Name=ritech-web was found." >&2
+            exit 1
+          fi
+          echo "id=$instance_id" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy the current commit through Systems Manager
+        shell: bash
+        run: |
+          command_id="$(aws ssm send-command \
+            --instance-ids '${{ steps.instance.outputs.id }}' \
+            --document-name AWS-RunShellScript \
+            --comment "Deploy commit $GITHUB_SHA" \
+            --parameters commands='["/usr/local/bin/ritech-deploy update"]' \
+            --query 'Command.CommandId' --output text)"
+          for attempt in $(seq 1 90); do
+            status="$(aws ssm get-command-invocation \
+              --command-id "$command_id" \
+              --instance-id '${{ steps.instance.outputs.id }}' \
+              --query Status --output text 2>/dev/null || true)"
+            case "$status" in
+              Success)
+                aws ssm get-command-invocation --command-id "$command_id" \
+                  --instance-id '${{ steps.instance.outputs.id }}' \
+                  --query StandardOutputContent --output text
+                exit 0
+                ;;
+              Failed|TimedOut|Cancelled|Cancelling)
+                aws ssm get-command-invocation --command-id "$command_id" \
+                  --instance-id '${{ steps.instance.outputs.id }}' \
+                  --query '[Status,StandardOutputContent,StandardErrorContent]' --output text
+                exit 1
+                ;;
+            esac
+            sleep 10
+          done
+          echo "Timed out waiting for Systems Manager command $command_id" >&2
+          exit 1
