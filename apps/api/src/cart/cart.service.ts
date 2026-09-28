@@ -1,5 +1,6 @@
 import { Injectable, BadRequestException, NotFoundException } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
+import { isNarinoOrigin } from "../products/origin-policy";
 
 @Injectable()
 export class CartService {
@@ -16,9 +17,12 @@ export class CartService {
     // Validate minimum 100kg for coffee
     const product = await this.prisma.product.findUnique({
       where: { id: data.productId },
-      select: { type: true, name: true },
+      select: { type: true, name: true, origin: true, active: true },
     });
     if (!product) throw new NotFoundException("Producto no encontrado");
+    if (!product.active || !isNarinoOrigin(product.origin)) {
+      throw new BadRequestException("El carrito solo admite productos activos con origen en Nariño.");
+    }
 
     if (product.type === "CAFE" && data.quantity < 100) {
       throw new BadRequestException(
@@ -88,9 +92,12 @@ export class CartService {
   async updateQuantity(itemId: string, quantity: number) {
     const item = await this.prisma.cartItem.findUnique({
       where: { id: itemId },
-      include: { product: { select: { type: true } } },
+      include: { product: { select: { type: true, origin: true, active: true } } },
     });
     if (!item) throw new NotFoundException("Item no encontrado en el carrito");
+    if (!item.product.active || !isNarinoOrigin(item.product.origin)) {
+      throw new BadRequestException("El carrito solo admite productos activos con origen en Nariño.");
+    }
 
     if (item.product.type === "CAFE" && quantity < 100) {
       throw new BadRequestException(

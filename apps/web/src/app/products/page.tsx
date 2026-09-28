@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { api } from "@/lib/api";
 
 type Product = { id: string; name: string; type: "CAFE" | "CACAO"; variety: string; origin: string; altitude?: string | null; process?: string | null; description?: string | null; active: boolean; _count?: { lots: number; orderItems: number } };
-const emptyForm = { name: "", type: "CAFE", variety: "", origin: "", altitude: "", process: "", description: "" };
+const emptyForm = { name: "", type: "CAFE", variety: "", origin: "Nariño, Colombia", altitude: "", process: "", description: "" };
 
 export default function ProductsPage() {
   const reduceMotion = useReducedMotion();
@@ -53,7 +53,7 @@ export default function ProductsPage() {
     <DashboardLayout>
       <div className="space-y-6">
         <div className="flex flex-col gap-4 border-b border-border pb-5 sm:flex-row sm:items-end sm:justify-between">
-          <div><h2 className="text-[26px] font-semibold tracking-[-0.045em] sm:text-[32px]">Catálogo de origen</h2><p className="mt-1 text-sm text-muted-foreground">Café y cacao listos para vincular a lotes de exportación.</p></div>
+          <div><h2 className="text-[26px] font-semibold tracking-[-0.045em] sm:text-[32px]">Catálogo de origen</h2><p className="mt-1 text-sm text-muted-foreground">Café y cacao de Nariño para vincular a lotes de exportación.</p></div>
           <Button onClick={() => { setShowCreate((value) => !value); setError(""); }} className="gap-2"><PackagePlus size={16} />Nuevo producto</Button>
         </div>
         {notice && <div role="status" className="rounded-lg border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800">{notice}</div>}
@@ -62,11 +62,11 @@ export default function ProductsPage() {
         <AnimatePresence initial={false}>
           {showCreate && <motion.section initial={reduceMotion ? false : { opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={reduceMotion ? undefined : { opacity: 0, height: 0 }} transition={{ duration: reduceMotion ? 0 : 0.2 }} className="overflow-hidden rounded-xl border border-border bg-card" aria-labelledby="new-product-title">
             <form onSubmit={createProduct} className="grid gap-4 p-5 sm:grid-cols-2 xl:grid-cols-3">
-              <div className="sm:col-span-2 xl:col-span-3"><h3 id="new-product-title" className="font-semibold">Ficha de producto</h3><p className="mt-1 text-xs text-muted-foreground">La combinación de variedad y origen debe ser única.</p></div>
+              <div className="sm:col-span-2 xl:col-span-3"><h3 id="new-product-title" className="font-semibold">Ficha de producto</h3><p className="mt-1 text-xs text-muted-foreground">RiTech trabaja exclusivamente con café y cacao de Nariño. La combinación de variedad y origen debe ser única.</p></div>
               <div className="space-y-2"><Label htmlFor="product-name">Nombre</Label><Input id="product-name" value={form.name} onChange={(event) => setForm({ ...form, name: event.target.value })} required /></div>
               <div className="space-y-2"><Label htmlFor="product-type">Familia</Label><select id="product-type" value={form.type} onChange={(event) => setForm({ ...form, type: event.target.value })} className="h-10 w-full rounded-md border border-input bg-background px-3 text-sm"><option value="CAFE">Café</option><option value="CACAO">Cacao</option></select></div>
               <div className="space-y-2"><Label htmlFor="product-variety">Variedad</Label><Input id="product-variety" value={form.variety} onChange={(event) => setForm({ ...form, variety: event.target.value })} required /></div>
-              <div className="space-y-2"><Label htmlFor="product-origin">Origen geográfico</Label><Input id="product-origin" value={form.origin} onChange={(event) => setForm({ ...form, origin: event.target.value })} placeholder="Departamento, Colombia" required /></div>
+              <div className="space-y-2"><Label htmlFor="product-origin">Origen geográfico</Label><Input id="product-origin" value={form.origin} readOnly aria-describedby="product-origin-help" required /><p id="product-origin-help" className="text-xs text-muted-foreground">Todos los productos del catálogo deben provenir de Nariño.</p></div>
               <div className="space-y-2"><Label htmlFor="product-altitude">Altitud</Label><Input id="product-altitude" value={form.altitude} onChange={(event) => setForm({ ...form, altitude: event.target.value })} placeholder="1.800 m" /></div>
               <div className="space-y-2"><Label htmlFor="product-process">Proceso</Label><Input id="product-process" value={form.process} onChange={(event) => setForm({ ...form, process: event.target.value })} placeholder="Lavado, natural…" /></div>
               <div className="space-y-2 sm:col-span-2 xl:col-span-3"><Label htmlFor="product-description">Descripción</Label><Input id="product-description" value={form.description} onChange={(event) => setForm({ ...form, description: event.target.value })} /></div>

@@ -5,6 +5,7 @@ import {
 } from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { CreateProductDto, UpdateProductDto, ProductFilterDto } from "./dto/product.dto";
+import { NARINO_PRODUCT_ORIGIN, requireNarinoOrigin } from "./origin-policy";
 
 @Injectable()
 export class ProductsService {
@@ -12,7 +13,8 @@ export class ProductsService {
 
   async create(dto: CreateProductDto) {
     const variety = dto.variety.trim();
-    const origin = dto.origin.trim();
+    requireNarinoOrigin(dto.origin);
+    const origin = NARINO_PRODUCT_ORIGIN;
     const exists = await this.prisma.product.findFirst({
       where: {
         variety: { equals: variety, mode: "insensitive" },
@@ -40,16 +42,27 @@ export class ProductsService {
   }
 
   async findAll(filters?: ProductFilterDto) {
-    const where: any = {};
+    const where: any = {
+      AND: [
+        {
+          OR: [
+            { origin: { contains: "Nariño", mode: "insensitive" } },
+            { origin: { contains: "Narino", mode: "insensitive" } },
+          ],
+        },
+      ],
+    };
     if (filters?.type) where.type = filters.type;
     if (filters?.variety) where.variety = { contains: filters.variety, mode: "insensitive" };
     if (filters?.active !== undefined) where.active = filters.active;
     if (filters?.search) {
-      where.OR = [
-        { name: { contains: filters.search, mode: "insensitive" } },
-        { variety: { contains: filters.search, mode: "insensitive" } },
-        { origin: { contains: filters.search, mode: "insensitive" } },
-      ];
+      where.AND.push({
+        OR: [
+          { name: { contains: filters.search, mode: "insensitive" } },
+          { variety: { contains: filters.search, mode: "insensitive" } },
+          { origin: { contains: filters.search, mode: "insensitive" } },
+        ],
+      });
     }
 
     return this.prisma.product.findMany({
@@ -80,6 +93,11 @@ export class ProductsService {
 
     const newVariety = dto.variety?.trim() ?? product.variety;
     const newOrigin = dto.origin?.trim() ?? product.origin;
+    if (dto.origin !== undefined) {
+      requireNarinoOrigin(dto.origin);
+    } else if (dto.active !== false) {
+      requireNarinoOrigin(newOrigin);
+    }
     const duplicate = await this.prisma.product.findFirst({
       where: {
         id: { not: id },
@@ -96,7 +114,7 @@ export class ProductsService {
       data: {
         ...dto,
         variety: newVariety,
-        origin: newOrigin,
+        origin: dto.origin !== undefined ? NARINO_PRODUCT_ORIGIN : newOrigin,
         type: dto.type ? (dto.type as any) : undefined,
       },
       include: { lots: true, certificates: true },

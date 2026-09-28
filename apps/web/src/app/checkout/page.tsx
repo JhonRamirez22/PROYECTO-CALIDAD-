@@ -8,19 +8,19 @@ import { api } from "@/lib/api";
 const fallbackProducts: Product[] = [
   {
     id: "1",
-    name: "Café Arábica Huila",
+    name: "Café Arábica Nariño",
     price: 18.5,
     category: "Café",
     image: "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=400&h=400&fit=crop",
-    origin: "Huila, Colombia",
+    origin: "Nariño, Colombia",
   },
   {
     id: "2",
-    name: "Cacao Criollo Santander",
+    name: "Cacao Criollo Nariño",
     price: 24.0,
     category: "Cacao",
     image: "https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=400&h=400&fit=crop",
-    origin: "Santander, Colombia",
+    origin: "Nariño, Colombia",
   },
   {
     id: "3",
@@ -32,11 +32,11 @@ const fallbackProducts: Product[] = [
   },
   {
     id: "4",
-    name: "Cacao Trinitario Tolima",
+    name: "Cacao Trinitario Nariño",
     price: 22.5,
     category: "Cacao",
     image: "https://images.unsplash.com/photo-1606312619070-d48b4c652a52?w=400&h=400&fit=crop",
-    origin: "Tolima, Colombia",
+    origin: "Nariño, Colombia",
   },
 ];
 
@@ -56,7 +56,7 @@ export default function CheckoutPage() {
               price: parseFloat(p.pricePerKg || p.price || "0"),
               category: p.type === "CAFE" ? "Café" : "Cacao",
               image: `https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=400&h=400&fit=crop`,
-              origin: p.region || "Colombia",
+              origin: p.origin || "Nariño, Colombia",
             }))
           );
         }
@@ -73,7 +73,7 @@ export default function CheckoutPage() {
         <div ref={headerRef} className="mb-8">
           <h1 className="text-3xl font-heading font-bold">Tienda</h1>
           <p className="text-muted-foreground mt-1">
-            Seleccione productos para su pedido de exportación
+            Café y cacao de Nariño para su pedido de exportación
           </p>
         </div>
         <InteractiveCheckout products={products} />

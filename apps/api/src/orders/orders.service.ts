@@ -7,6 +7,7 @@ import { PrismaService } from "../prisma/prisma.service";
 import { CreateOrderDto, OrderFilterDto } from "./dto/order.dto";
 import { NotificationsService } from "../notifications/notifications.service";
 import { NotificationType, NotificationPriority, UserRole } from "@prisma/client";
+import { isNarinoOrigin } from "../products/origin-policy";
 
 const DEFAULT_COMMISSION_PERCENTAGE = 1;
 
@@ -48,6 +49,21 @@ export class OrdersService {
       throw new BadRequestException("El cliente no está activo");
     }
     await this.requireActiveContract(dto.clientId);
+
+    const productIds = [...new Set(dto.items.map((item) => item.productId))];
+    const products = await this.prisma.product.findMany({
+      where: { id: { in: productIds } },
+      select: { id: true, name: true, active: true, origin: true },
+    });
+    for (const productId of productIds) {
+      const product = products.find((candidate) => candidate.id === productId);
+      if (!product) throw new NotFoundException("Producto no encontrado");
+      if (!product.active || !isNarinoOrigin(product.origin)) {
+        throw new BadRequestException(
+          `El producto ${product.name} no está disponible: RiTech solo admite café y cacao con origen en Nariño.`,
+        );
+      }
+    }
 
     // Validate and reserve lots
     const lotIds = dto.items

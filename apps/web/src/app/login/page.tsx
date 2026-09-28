@@ -34,12 +34,12 @@ export default function LoginPage() {
         <div className="login-story-copy">
           <p className="login-label">DEL ORIGEN AL DESTINO</p>
           <h1>Un lote.<br />Un recorrido.<br /><span>Una historia verificable.</span></h1>
-          <p className="max-w-md text-sm leading-6 text-blue-100/80">Coordina café y cacao de origen colombiano con clientes, pedidos y documentos de exportación en un solo expediente.</p>
+          <p className="max-w-md text-sm leading-6 text-blue-100/80">Coordina café y cacao exclusivos de Nariño con clientes, pedidos y documentos de exportación en un solo expediente.</p>
         </div>
         <div className="manifest-preview" aria-label="Vista ilustrativa del manifiesto de exportación">
           <div className="manifest-preview-top"><span>MANIFIESTO</span><span>RTE · UE</span></div>
           <div className="manifest-preview-route"><span className="route-dot route-dot-origin" /><span className="route-line" /><span className="route-dot route-dot-destination" /></div>
-          <div className="manifest-preview-bottom"><span>HUILA, COLOMBIA</span><span>ROTTERDAM, NL</span></div>
+          <div className="manifest-preview-bottom"><span>NARIÑO, COLOMBIA</span><span>ROTTERDAM, NL</span></div>
           <div className="manifest-preview-note"><BadgeCheck size={14} /><span>Trazabilidad en cada etapa</span><FileText size={14} className="ml-auto" /></div>
         </div>
         <p className="login-story-footer">RiTech SAS <span>·</span> Sistema operativo de exportación</p>

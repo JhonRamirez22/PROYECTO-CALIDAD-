@@ -19,9 +19,9 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RiTech Export — Café y Cacao Colombiano",
+  title: "RiTech Export — Café y Cacao de Nariño",
   description:
-    "Plataforma B2B de exportación de café y cacao de origen colombiano para compradores europeos",
+    "Plataforma B2B de exportación de café y cacao exclusivos de Nariño para compradores europeos",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

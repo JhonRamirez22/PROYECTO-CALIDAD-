@@ -234,21 +234,21 @@ async function main() {
   const products = await Promise.all([
     prisma.product.upsert({
       where: { id: 'product-1' },
-      update: {},
+      update: { name: 'Café Especial Nariño', origin: 'Nariño, Colombia', description: 'Café de origen único de las montañas de Nariño' },
       create: {
         id: 'product-1',
-        name: 'Café Especial Huila',
+        name: 'Café Especial Nariño',
         type: 'CAFE',
         variety: 'Arábica',
-        origin: 'Huila, Colombia',
+        origin: 'Nariño, Colombia',
         altitude: '1,800 msnm',
         process: 'Lavado',
-        description: 'Café de origen único de las montañas de Huila',
+        description: 'Café de origen único de las montañas de Nariño',
       },
     }),
     prisma.product.upsert({
       where: { id: 'product-2' },
-      update: {},
+      update: { origin: 'Nariño, Colombia' },
       create: {
         id: 'product-2',
         name: 'Cacao Fino Nariño',
@@ -262,7 +262,7 @@ async function main() {
     }),
     prisma.product.upsert({
       where: { id: 'product-3' },
-      update: {},
+      update: { origin: 'Nariño, Colombia' },
       create: {
         id: 'product-3',
         name: 'Café Orgánico Nariño',
@@ -281,14 +281,14 @@ async function main() {
   const lots = await Promise.all([
     prisma.lot.upsert({
       where: { traceabilityCode: 'LT-2026-0001' },
-      update: {},
+      update: { originLocation: 'Finca de demostración, Nariño' },
       create: {
         traceabilityCode: 'LT-2026-0001',
         weight: 150,
         status: 'DISPONIBLE',
         productId: 'product-1',
         ownedById: propietario?.id,
-        originLocation: 'Finca El Paraíso, Huila',
+        originLocation: 'Finca de demostración, Nariño',
         harvestDate: new Date('2026-03-15'),
         exportPrice: 8.5,
         currency: 'EUR',

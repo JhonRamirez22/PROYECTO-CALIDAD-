@@ -2,6 +2,7 @@ import { Injectable, NotFoundException, BadRequestException } from "@nestjs/comm
 import { PrismaService } from "../prisma/prisma.service";
 import { CreateLotDto, UpdateLotDto, LotFilterDto } from "./dto/lot.dto";
 import { LotStatus } from "@prisma/client";
+import { NARINO_PRODUCT_ORIGIN, isNarinoOrigin, requireNarinoOrigin } from "../products/origin-policy";
 
 const ALLOWED_TRANSITIONS: Record<LotStatus, LotStatus[]> = {
   DISPONIBLE: ["DISPONIBLE", "RESERVADO", "CERTIFICADO"],
@@ -25,6 +26,10 @@ export class LotsService {
       where: { id: dto.productId },
     });
     if (!product) throw new NotFoundException("Producto no encontrado");
+    if (!product.active || !isNarinoOrigin(product.origin)) {
+      throw new BadRequestException("Solo se pueden crear lotes de productos activos con origen en Nariño.");
+    }
+    if (dto.originLocation) requireNarinoOrigin(dto.originLocation);
 
     const code = dto.traceabilityCode || (await this.generateTraceCode());
     return this.prisma.lot.create({
@@ -34,7 +39,7 @@ export class LotsService {
         weight: dto.weight,
         harvestDate: dto.harvestDate ? new Date(dto.harvestDate) : null,
         processDate: dto.processDate ? new Date(dto.processDate) : null,
-        originLocation: dto.originLocation,
+        originLocation: dto.originLocation?.trim() || NARINO_PRODUCT_ORIGIN,
         notes: dto.notes,
         ownedById: dto.ownerId || null,
       },
@@ -48,7 +53,16 @@ export class LotsService {
     if (filters?.status) where.status = filters.status;
 
     return this.prisma.lot.findMany({
-      where,
+      where: {
+        ...where,
+        product: {
+          active: true,
+          OR: [
+            { origin: { contains: "Nariño", mode: "insensitive" } },
+            { origin: { contains: "Narino", mode: "insensitive" } },
+          ],
+        },
+      },
       include: {
         product: true,
         owner: { select: { id: true, email: true } },
@@ -96,6 +110,8 @@ export class LotsService {
   async update(id: string, dto: UpdateLotDto) {
     const lot = await this.findOne(id);
 
+    if (dto.originLocation) requireNarinoOrigin(dto.originLocation);
+
     if (
       dto.status &&
       dto.status !== lot.status &&
@@ -132,6 +148,15 @@ export class LotsService {
 
   async getInventory() {
     const lots = await this.prisma.lot.findMany({
+      where: {
+        product: {
+          active: true,
+          OR: [
+            { origin: { contains: "Nariño", mode: "insensitive" } },
+            { origin: { contains: "Narino", mode: "insensitive" } },
+          ],
+        },
+      },
       include: {
         product: true,
         certificates: { select: { id: true, type: true, expiresAt: true } },
