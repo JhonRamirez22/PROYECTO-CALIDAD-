@@ -23,9 +23,9 @@ async function main() {
   }
 
   const productSpecs = [
-    { name: "Café de altura · Huila", type: "CAFE" as const, variety: "Caturra", origin: "Huila, Colombia", altitude: "1.780 m", process: "Lavado", description: "Registro sintético para demostración de catálogo." },
+    { name: "Café de altura · Nariño", type: "CAFE" as const, variety: "Caturra", origin: "Nariño, Colombia", altitude: "1.780 m", process: "Lavado", description: "Registro sintético para demostración de catálogo." },
     { name: "Cacao fino · Nariño", type: "CACAO" as const, variety: "Criollo", origin: "Nariño, Colombia", altitude: "1.200 m", process: "Fermentado", description: "Registro sintético para demostración de catálogo." },
-    { name: "Café de origen · Cauca", type: "CAFE" as const, variety: "Castillo", origin: "Cauca, Colombia", altitude: "1.650 m", process: "Natural", description: "Registro sintético para demostración de catálogo." },
+    { name: "Café de origen · Nariño", type: "CAFE" as const, variety: "Castillo", origin: "Nariño, Colombia", altitude: "1.650 m", process: "Natural", description: "Registro sintético para demostración de catálogo." },
   ];
 
   const products: { id: string }[] = [];
@@ -65,11 +65,11 @@ async function main() {
   }));
 
   const lotSpecs = [
-    { traceabilityCode: "LT-DEMO-001", productId: products[0].id, weight: 240, status: "RESERVADO" as const, harvestDate: new Date("2026-02-18T00:00:00Z"), processDate: new Date("2026-02-25T00:00:00Z"), originLocation: "Finca de demostración · Huila" },
+    { traceabilityCode: "LT-DEMO-001", productId: products[0].id, weight: 240, status: "RESERVADO" as const, harvestDate: new Date("2026-02-18T00:00:00Z"), processDate: new Date("2026-02-25T00:00:00Z"), originLocation: "Finca de demostración · Nariño" },
     { traceabilityCode: "LT-DEMO-002", productId: products[1].id, weight: 320, status: "RESERVADO" as const, harvestDate: new Date("2026-03-11T00:00:00Z"), processDate: new Date("2026-03-18T00:00:00Z"), originLocation: "Finca de demostración · Nariño" },
-    { traceabilityCode: "LT-DEMO-003", productId: products[2].id, weight: 180, status: "DISPONIBLE" as const, harvestDate: new Date("2026-04-06T00:00:00Z"), processDate: new Date("2026-04-12T00:00:00Z"), originLocation: "Finca de demostración · Cauca" },
-    { traceabilityCode: "LT-DEMO-004", productId: products[0].id, weight: 120, status: "CERTIFICADO" as const, harvestDate: new Date("2026-04-14T00:00:00Z"), processDate: new Date("2026-04-19T00:00:00Z"), originLocation: "Finca de demostración · Huila" },
-    { traceabilityCode: "LT-DEMO-005", productId: products[2].id, weight: 160, status: "DISPONIBLE" as const, harvestDate: new Date("2026-05-02T00:00:00Z"), processDate: new Date("2026-05-08T00:00:00Z"), originLocation: "Finca de demostración · Cauca" },
+    { traceabilityCode: "LT-DEMO-003", productId: products[2].id, weight: 180, status: "DISPONIBLE" as const, harvestDate: new Date("2026-04-06T00:00:00Z"), processDate: new Date("2026-04-12T00:00:00Z"), originLocation: "Finca de demostración · Nariño" },
+    { traceabilityCode: "LT-DEMO-004", productId: products[0].id, weight: 120, status: "CERTIFICADO" as const, harvestDate: new Date("2026-04-14T00:00:00Z"), processDate: new Date("2026-04-19T00:00:00Z"), originLocation: "Finca de demostración · Nariño" },
+    { traceabilityCode: "LT-DEMO-005", productId: products[2].id, weight: 160, status: "DISPONIBLE" as const, harvestDate: new Date("2026-05-02T00:00:00Z"), processDate: new Date("2026-05-08T00:00:00Z"), originLocation: "Finca de demostración · Nariño" },
   ];
 
   const lots: { id: string }[] = [];

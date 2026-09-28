@@ -49,7 +49,7 @@ const TestimonialCard = ({ testimonial, delay }: { testimonial: Testimonial, del
 
 export const SignInPage: React.FC<SignInPageProps> = ({
   title = <span className="font-light text-foreground tracking-tighter">Bienvenido</span>,
-  description = "Acceda a su cuenta y continúe exportando café y cacao colombiano de origen",
+  description = "Acceda a su cuenta y continúe exportando café y cacao exclusivos de Nariño",
   heroImageSrc,
   testimonials = [],
   onSignIn,

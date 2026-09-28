@@ -109,7 +109,7 @@ export function Sidebar({
         <div className="workspace-switcher">
           <span className="workspace-switcher-dot" />
           <span className="min-w-0 flex-1">
-            <span className="block truncate text-xs font-semibold text-white">RiTech Colombia</span>
+            <span className="block truncate text-xs font-semibold text-white">RiTech Nariño</span>
             <span className="mt-0.5 block text-[10px] text-slate-300">Exportación · UE</span>
           </span>
         </div>
