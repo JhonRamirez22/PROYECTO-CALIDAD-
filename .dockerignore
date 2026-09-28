@@ -1,9 +1,17 @@
 .git
 .gitignore
-**/node_modules
-**/.next
-**/dist
-**/coverage
-**/storage
+.playwright-m/
+.playwright-mcp/
+node_modules/
+**/node_modules/
+**/.next/
+**/dist/
+**/coverage/
+**/storage/
 **/.env
 **/.env.*
+CALIDAD/
+BASES DE DATOS PROYECTO/
+wireframes-ritech/
+*.zip
+PRESENTACION CALIDAD DE SOFTWARE.pptx
